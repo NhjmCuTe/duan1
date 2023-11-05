@@ -1,0 +1,121 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  /* border: 1px solid rgb(210, 210, 210); */
+
+}
+
+a {
+  text-decoration: none;
+  color: rgb(68, 68, 68);
+}
+header{
+    border-bottom: 1px solid black;
+}
+header .row {
+  display: flex;
+  align-items: center;
+}
+header .tim_kiem {
+  position: relative;
+}
+header button {
+  position: absolute;
+  top: 7px;
+  left: 6px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+header button i {
+  width: 100%;
+  font-weight: 600 !important;
+}
+header input {
+  padding: 9px 10px;
+  padding-left: 40px;
+  border-radius: 30px;
+  outline: none;
+  border: 1px solid rgb(178, 176, 176);
+  background-color: rgb(247, 247, 247);
+  width: 100%;
+  font-size: medium;
+}
+header input:focus {
+  outline: 1px solid black;
+}
+header ul li {
+  font-weight: 800;
+  font-size: large;
+  list-style: none;
+  padding: 0 10px;
+}
+header ul {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  padding-left: 0 !important;
+  
+}
+header .item .col a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+header .item i {
+  margin-bottom: 5px;
+}
+header .item span {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgb(134, 134, 134);
+}
+header .item .gio_hang {
+  position: relative;
+}
+header .item p {
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  background-color: rgb(210, 0, 0);
+  padding: 1px 7px;
+  color: white;
+  border-radius: 50%;
+  /* margin: auto !important; */
+  font-weight: 700;
+  font-size: 12px;
+}
+header .menu_con {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  bottom: -333px;
+  left:-480px;
+  background-color: #fff;
+  width: 100vw;
+  height: 300px;
+  padding: 20px;
+}
+
+header .menu_chinh{
+    position: relative;
+}
+header .menu_chinh:hover::after{
+    content: "";
+    width: 80px;
+    height: 100px;
+    position: absolute;
+    top: 25px;
+    right: -7px;
+    /* background: red; */
+    z-index: 1;
+}
+
+header .menu_con_2{
+    display: flex;
+}
+header .menu_chinh:hover .menu_con {
+
+  display: block;
+}
