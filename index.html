@@ -1,472 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <header class="container">
-      <div class="logo">
-        <img src="./img/logo.svg" alt="" />
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="">SINGLE DAY</a>
-            <a href="">NỮ</a>
-            <a href="">NAM</a>
-            <a href="">TRẺ EM</a>
-            <a href="">HÀNG MỚI</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="search">
-        <form action="">
-          <button><i class="fas fa-search"></i></button>
-          <input type="text" placeholder="Tìm kiếm" />
-        </form>
-      </div>
-      <div class="shop">
-        <div class="shop-item">
-          <i class="fas fa-store-alt"></i>
-          <label for="">Cửa hàng</label>
-        </div>
-        <div class="shop-item">
-          <i class="far fa-user"></i>
-          <label for="">Tài khoản </label>
-        </div>
-        <div class="shop-item">
-          <i class="fas fa-shopping-cart"></i>
-          <label for="">Giỏ hàng</label>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+ 
+  <main>
+    
+    
+    <article class="container">
+      <div class="uu-dai-doc-quyen">
+        <h2>Ưu đãi độc quyền</h2>
+        <div class="location">
+          <button id="onlineBtn" class="active">Online</button>
+          <button id="storeBtn">Cửa hàng</button>
         </div>
       </div>
-    </header>
-    <main>
-      <div class="slideshow-container">
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <img
-            src="img/dongiolanh-banner-web_2880x960-.webp"
-            style="width: 100%"
-          />
-        </div>
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img
-            src="img/homewear-top-desktop_2880x960_1.webp"
-            style="width: 100%"
-          />
-        </div>
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img
-            src="img/uu-dai-bst-ni_top-banner_desktop.webp"
-            style="width: 100%"
-          />
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <div class="poster">
+        <img src="img/1.-do-thiet-yeu_uu-dai_desktop-mobile.webp" alt="" />
+        <img src="img/2.-vc-banmoi80_uu-dai_desktop-mobile.webp" alt="" />
+        <img src="img/3.-tat-giam-50_uu-dai_desktop-mobile.webp" alt="" />
       </div>
-      <div style="text-align: center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>
-      <div class="cod container">
-        <div class="cod-item">
-          <img src="img/service1.png" alt="" />
-          <div>
-            <h3>Thanh toán khi nhận hàng (COD)</h3>
-            <p>Giao hàng toàn quốc.</p>
-          </div>
-        </div>
-        <div class="cod-item">
-          <img src="img/service2.png" alt="" />
-          <div>
-            <h3>Miễn phí giao hàng</h3>
-            <p>Với đơn hàng trên 599.000đ.</p>
-          </div>
-        </div>
-        <div class="cod-item">
-          <img src="img/service3.png" alt="" />
-          <div>
-            <h3>Đổi hàng miễn phí</h3>
-            <p>Trong 30 ngày kể từ ngày mua.</p>
-          </div>
-        </div>
-      </div>
-      <article class="container">
-        <div class="uu-dai-doc-quyen">
-          <h2>Ưu đãi độc quyền</h2>
-          <div class="location">
-            <button id="onlineBtn" class="active">Online</button>
-            <button id="storeBtn">Cửa hàng</button>
-          </div>
-        </div>
-        <div class="poster">
-          <img src="img/1.-do-thiet-yeu_uu-dai_desktop-mobile.webp" alt="" />
-          <img src="img/2.-vc-banmoi80_uu-dai_desktop-mobile.webp" alt="" />
-          <img src="img/3.-tat-giam-50_uu-dai_desktop-mobile.webp" alt="" />
-        </div>
-        <div class="bst-thu-dong">
-          <div class="title-bst">
-            <h2>BST Thu đông 2023</h2>
-            <div class="online">
-              <button>Xem thêm</button><i class="fas fa-angle-double-right"></i>
-            </div>
-          </div>
-          <div class="products">
-            <div class="product-item">
-              <div class="img-prd">
-                <img src="img/product1.webp" alt="" />
-                <button class="add-to-cart">
-                  <span>Thêm nhanh vào giỏ</span>
-                </button>
-              </div>
-              <div class="info-prd">
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <h3 class="product-item-name">
-                  <a href="">Váy liền bé gái dài tay phối vải</a>
-                </h3>
-                <span class="price">599.000 ₫</span>
-              </div>
-            </div>
-            <div class="product-item">
-              <div class="img-prd">
-                <img src="img/product1.webp" alt="" />
-                <button class="add-to-cart">
-                  <span>Thêm nhanh vào giỏ</span>
-                </button>
-              </div>
-              <div class="info-prd">
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <h3 class="product-item-name">
-                  <a href="">Váy liền bé gái dài tay phối vải</a>
-                </h3>
-                <span class="price">599.000 ₫</span>
-              </div>
-            </div>
-            <div class="product-item">
-              <div class="img-prd">
-                <img src="img/product1.webp" alt="" />
-                <button class="add-to-cart">
-                  <span>Thêm nhanh vào giỏ</span>
-                </button>
-              </div>
-              <div class="info-prd">
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <h3 class="product-item-name">
-                  <a href="">Váy liền bé gái dài tay phối vải</a>
-                </h3>
-                <span class="price">599.000 ₫</span>
-              </div>
-            </div>
-            <div class="product-item">
-              <div class="img-prd">
-                <img src="img/product1.webp" alt="" />
-                <button class="add-to-cart">
-                  <span>Thêm nhanh vào giỏ</span>
-                </button>
-              </div>
-              <div class="info-prd">
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <div
-                  data-v-254e7158=""
-                  class="swatch-option color selected"
-                  style="
-                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
-                  "
-                ></div>
-                <h3 class="product-item-name">
-                  <a href="">Váy liền bé gái dài tay phối vải</a>
-                </h3>
-                <span class="price">599.000 ₫</span>
-              </div>
-            </div>
-          </div>
-          <h3 class="san-pham-moi">Sản phẩm mới</h3>
-          <div class="new-product">
-            <a href="">
-              <img src="img/nam1.webp" alt="" />
-            </a>
-            <a href="">
-              <img src="img/prdnew2.webp" alt="" />
-            </a>
-            <a href="">
-              <img src="img/prdnew3.webp" alt="" />
-            </a>
-            <a href="">
-              <img src="img/prdnew4.webp" alt="" />
-            </a>
-          </div>
-        </div>
+      <div class="bst-thu-dong">
         <div class="title-bst">
-          <h2>CANIFALIFE</h2>
+          <h2>BST Thu đông 2023</h2>
           <div class="online">
             <button>Xem thêm</button><i class="fas fa-angle-double-right"></i>
           </div>
         </div>
-        <div class="canifalife">
-          <div class="canifalife-item">
-            <a href="">
-              <img src="img/game-online-1.webp" alt="" />
-            </a>
-            <span
-              >ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-              CANIFA
-            </span>
-            <p class="real-time">20:31 24/10/2023</p>
-          </div>
-          <div class="canifalife-item">
-            <a href="">
-              <img src="img/game-online-2.webp" alt="" />
-            </a>
-            <span
-              >ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-              CANIFA
-            </span>
-            <p class="real-time">20:31 24/10/2023</p>
-          </div>
-          <div class="canifalife-item">
-            <a href="">
-              <img src="img/game-online-3.webp" alt="" />
-            </a>
-            <span
-              >ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-              CANIFA
-            </span>
-            <p class="real-time">20:31 24/10/2023</p>
-          </div>
-          <div class="canifalife-item">
-            <a href="">
-              <img src="img/game-online-3.webp" alt="" />
-            </a>
-            <span
-              >ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-              CANIFA
-            </span>
-            <p class="real-time">20:31 24/10/2023</p>
-          </div>
-        </div>
-        <div class="register">
-          <h3 class="block-title">Đăng ký nhận bản tin</h3>
-          <span
-            >Cùng Canifa Blog cập nhật những thông tin mới nhất về thời trang và
-            phong cách sống.</span
-          >
-          <div class="form-subscribe">
-            <input
-              type="text"
-              name=""
-              placeholder="Nhập email đăng ký của bạn"
-              class="input-subscribe"
-            />
-            <button type="submit" title="Gửi" class="btn-subscribe">
-              <span>Đăng ký</span>
-            </button>
-          </div>
-          <div class="block-social">
-            <i class="social fab fa-facebook-square"></i>
-            <i class="social fab fa-instagram-square"></i>
-            <i class="social fab fa-youtube-square"></i>
-            <i class="social fab fa-tiktok"></i>
-          </div>
-        </div>
-      </article>
-    </main>
-    <footer class="site-footer">
-      <div class="container footer2">
-        <div class="footer-content">
-          <div class="row">
-            <div class="footer-colum1">
-              <h3>CÔNG TY CỔ PHẦN CANIFA</h3>
-              <p>
-                Số ĐKKD: 0107574310, ngày cấp: 23/09/2016, Nơi cấp: Sở Kế hoạch
-                và đầu tư Hà Nội
-              </p>
-              <p>
-                Địa chỉ trụ sở tại số 688 Đường Quang Trung, Phường La Khê, Quận
-                Hà Đông, Thành phố Hà Nội.
-              </p>
-              <p>
-                Địa chỉ liên hệ: P301, tầng 3, tòa nhà GP Invest, số 170 La
-                Thành, Phường Ô Chợ Dừa, Quận Đống Đa, Thành Phố Hà Nội.
-              </p>
-              <p>Điện thoại: +8424 - 7303.0222</p>
-              <p>Fax: +8424 - 6277.6419</p>
-              <p>Email: hello@canifa.com</p>
-              <div class="block-social">
-                <i class="social fab fa-facebook-square"></i>
-                <i class="social fab fa-instagram-square"></i>
-                <i class="social fab fa-youtube-square"></i>
-                <i class="social fab fa-tiktok"></i>
-              </div>
+        <div class="products">
+          <div class="product-item">
+            <div class="img-prd">
+              <img src="img/product1.webp" alt="" />
+              <button class="add-to-cart">
+                <span>Thêm nhanh vào giỏ</span>
+              </button>
             </div>
-            <div class="footer-colum2">
-              <h3>Thương hiệu</h3>
-              <ul>
-                <li title="Giới thiệu">
-                  <span>Giới thiệu</span>
-                </li>
-                <li title="Tin tức">
-                  <span>Tin tức</span>
-                </li>
-                <li title="Tuyển dụng">
-                  <span>Tuyển dụng</span>
-                </li>
-                <li title="Với cộng đồng">
-                  <span>Với cộng đồng</span>
-                </li>
-                <li title="Hệ thống cửa hàng">
-                  <span>Hệ thống cửa hàng</span>
-                </li>
-                <li title="Liên hệ">
-                  <span>Liên hệ</span>
-                </li>
-              </ul>
+            <div class="info-prd">
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <h3 class="product-item-name">
+                <a href="">Váy liền bé gái dài tay phối vải</a>
+              </h3>
+              <span class="price">599.000 ₫</span>
             </div>
-            <div class="footer-colum3">
-              <h3>Hỗ trợ</h3>
-              <ul>
-                <li title="Hỏi đáp">
-                  <span>Hỏi đáp</span>
-                </li>
-                <li title="Chính sách KHTT">
-                  <span>Chính sách KHTT</span>
-                </li>
-                <li title="Điều kiện - Điều khoản Chính sách KHTT">
-                  <span>Điều kiện - Điều khoản Chính sách KHTT</span>
-                </li>
-                <li title="Chính sách vận chuyển">
-                  <span>Chính sách vận chuyển</span>
-                </li>
-                <li title="Gợi ý tìm size">
-                  <span>Gợi ý tìm size</span>
-                </li>
-                <li title="Kiểm tra đơn hàng">
-                  <span>Kiểm tra đơn hàng</span>
-                </li>
-                <li title="Tra cứu điểm thẻ">
-                  <span>Tra cứu điểm thẻ</span>
-                </li>
-                <li title="Chính sách bảo mật thông tin KH">
-                  <span>Chính sách bảo mật thông tin KH</span>
-                </li>
-              </ul>
+          </div>
+          <div class="product-item">
+            <div class="img-prd">
+              <img src="img/product1.webp" alt="" />
+              <button class="add-to-cart">
+                <span>Thêm nhanh vào giỏ</span>
+              </button>
             </div>
-            <div class="footer-colum4">
-              <h3>Tải ứng dụng</h3>
-              <div class="application">
-                <div class="bancode">
-                  <img src="" width="100" height="100" alt="" />
-                </div>
-                <div class="apps">
-                  <a href="" target="_blank" aria-label="Google Play"
-                    ><img src="" width="100" height="100" alt=""
-                  /></a>
-                  <a href="" target="_blank" aria-label="Apple Store"
-                    ><img src="" width="100" height="100" alt=""
-                  /></a>
-                </div>
-              </div>
-              <div class="payment">
-                <h3>Phương thức thanh toán</h3>
-                <p>
-                  <img src="" width="100" height="100" alt="" />
-                </p>
-              </div>
+            <div class="info-prd">
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <h3 class="product-item-name">
+                <a href="">Váy liền bé gái dài tay phối vải</a>
+              </h3>
+              <span class="price">599.000 ₫</span>
+            </div>
+          </div>
+          <div class="product-item">
+            <div class="img-prd">
+              <img src="img/product1.webp" alt="" />
+              <button class="add-to-cart">
+                <span>Thêm nhanh vào giỏ</span>
+              </button>
+            </div>
+            <div class="info-prd">
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <h3 class="product-item-name">
+                <a href="">Váy liền bé gái dài tay phối vải</a>
+              </h3>
+              <span class="price">599.000 ₫</span>
+            </div>
+          </div>
+          <div class="product-item">
+            <div class="img-prd">
+              <img src="img/product1.webp" alt="" />
+              <button class="add-to-cart">
+                <span>Thêm nhanh vào giỏ</span>
+              </button>
+            </div>
+            <div class="info-prd">
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <div data-v-254e7158="" class="swatch-option color selected" style="
+                    background-image: url('https://media.canifa.com/attribute/swatch/images/sa038.png');
+                  "></div>
+              <h3 class="product-item-name">
+                <a href="">Váy liền bé gái dài tay phối vải</a>
+              </h3>
+              <span class="price">599.000 ₫</span>
             </div>
           </div>
         </div>
-        <div class="footer-bottom">
-          <div class="copyright">© 2023 CANIFA</div>
-          <div class="bct">
-            <a href="" target="_blank" aria-label="Pay"
-              ><img src="" width="100" height="100" alt=""
-            /></a>
+        <h3 class="san-pham-moi">Sản phẩm mới</h3>
+        <div class="new-product">
+          <a href="">
+            <img src="img/nam1.webp" alt="" />
+          </a>
+          <a href="">
+            <img src="img/prdnew2.webp" alt="" />
+          </a>
+          <a href="">
+            <img src="img/prdnew3.webp" alt="" />
+          </a>
+          <a href="">
+            <img src="img/prdnew4.webp" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="title-bst">
+        <h2>CANIFALIFE</h2>
+        <div class="online">
+          <button>Xem thêm</button><i class="fas fa-angle-double-right"></i>
+        </div>
+      </div>
+      <div class="canifalife">
+        <div class="canifalife-item">
+          <a href="">
+            <img src="img/game-online-1.webp" alt="" />
+          </a>
+          <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
+            CANIFA
+          </span>
+          <p class="real-time">20:31 24/10/2023</p>
+        </div>
+        <div class="canifalife-item">
+          <a href="">
+            <img src="img/game-online-2.webp" alt="" />
+          </a>
+          <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
+            CANIFA
+          </span>
+          <p class="real-time">20:31 24/10/2023</p>
+        </div>
+        <div class="canifalife-item">
+          <a href="">
+            <img src="img/game-online-3.webp" alt="" />
+          </a>
+          <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
+            CANIFA
+          </span>
+          <p class="real-time">20:31 24/10/2023</p>
+        </div>
+        <div class="canifalife-item">
+          <a href="">
+            <img src="img/game-online-3.webp" alt="" />
+          </a>
+          <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
+            CANIFA
+          </span>
+          <p class="real-time">20:31 24/10/2023</p>
+        </div>
+      </div>
+      <div class="register">
+        <h3 class="block-title">Đăng ký nhận bản tin</h3>
+        <span>Cùng Canifa Blog cập nhật những thông tin mới nhất về thời trang và
+          phong cách sống.</span>
+        <div class="form-subscribe">
+          <input type="text" name="" placeholder="Nhập email đăng ký của bạn" class="input-subscribe" />
+          <button type="submit" title="Gửi" class="btn-subscribe">
+            <span>Đăng ký</span>
+          </button>
+        </div>
+        <div class="block-social">
+          <i class="social fab fa-facebook-square"></i>
+          <i class="social fab fa-instagram-square"></i>
+          <i class="social fab fa-youtube-square"></i>
+          <i class="social fab fa-tiktok"></i>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer2">
+      <div class="footer-content">
+        <div class="row">
+          <div class="footer-colum1">
+            <h3>CÔNG TY CỔ PHẦN CANIFA</h3>
+            <p>
+              Số ĐKKD: 0107574310, ngày cấp: 23/09/2016, Nơi cấp: Sở Kế hoạch
+              và đầu tư Hà Nội
+            </p>
+            <p>
+              Địa chỉ trụ sở tại số 688 Đường Quang Trung, Phường La Khê, Quận
+              Hà Đông, Thành phố Hà Nội.
+            </p>
+            <p>
+              Địa chỉ liên hệ: P301, tầng 3, tòa nhà GP Invest, số 170 La
+              Thành, Phường Ô Chợ Dừa, Quận Đống Đa, Thành Phố Hà Nội.
+            </p>
+            <p>Điện thoại: +8424 - 7303.0222</p>
+            <p>Fax: +8424 - 6277.6419</p>
+            <p>Email: hello@canifa.com</p>
+            <div class="block-social">
+              <i class="social fab fa-facebook-square"></i>
+              <i class="social fab fa-instagram-square"></i>
+              <i class="social fab fa-youtube-square"></i>
+              <i class="social fab fa-tiktok"></i>
+            </div>
+          </div>
+          <div class="footer-colum2">
+            <h3>Thương hiệu</h3>
+            <ul>
+              <li title="Giới thiệu">
+                <span>Giới thiệu</span>
+              </li>
+              <li title="Tin tức">
+                <span>Tin tức</span>
+              </li>
+              <li title="Tuyển dụng">
+                <span>Tuyển dụng</span>
+              </li>
+              <li title="Với cộng đồng">
+                <span>Với cộng đồng</span>
+              </li>
+              <li title="Hệ thống cửa hàng">
+                <span>Hệ thống cửa hàng</span>
+              </li>
+              <li title="Liên hệ">
+                <span>Liên hệ</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-colum3">
+            <h3>Hỗ trợ</h3>
+            <ul>
+              <li title="Hỏi đáp">
+                <span>Hỏi đáp</span>
+              </li>
+              <li title="Chính sách KHTT">
+                <span>Chính sách KHTT</span>
+              </li>
+              <li title="Điều kiện - Điều khoản Chính sách KHTT">
+                <span>Điều kiện - Điều khoản Chính sách KHTT</span>
+              </li>
+              <li title="Chính sách vận chuyển">
+                <span>Chính sách vận chuyển</span>
+              </li>
+              <li title="Gợi ý tìm size">
+                <span>Gợi ý tìm size</span>
+              </li>
+              <li title="Kiểm tra đơn hàng">
+                <span>Kiểm tra đơn hàng</span>
+              </li>
+              <li title="Tra cứu điểm thẻ">
+                <span>Tra cứu điểm thẻ</span>
+              </li>
+              <li title="Chính sách bảo mật thông tin KH">
+                <span>Chính sách bảo mật thông tin KH</span>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-colum4">
+            <h3>Tải ứng dụng</h3>
+            <div class="application">
+              <div class="bancode">
+                <img src="" width="100" height="100" alt="" />
+              </div>
+              <div class="apps">
+                <a href="" target="_blank" aria-label="Google Play"><img src="" width="100" height="100" alt="" /></a>
+                <a href="" target="_blank" aria-label="Apple Store"><img src="" width="100" height="100" alt="" /></a>
+              </div>
+            </div>
+            <div class="payment">
+              <h3>Phương thức thanh toán</h3>
+              <p>
+                <img src="" width="100" height="100" alt="" />
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
-  </body>
-  <script
-    src="https://kit.fontawesome.com/18e3ce5bd1.js"
-    crossorigin="anonymous"
-  ></script>
-  <script src="./js.js"></script>
+      <div class="footer-bottom">
+        <div class="copyright">© 2023 CANIFA</div>
+        <div class="bct">
+          <a href="" target="_blank" aria-label="Pay"><img src="" width="100" height="100" alt="" /></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+<script src="https://kit.fontawesome.com/18e3ce5bd1.js" crossorigin="anonymous"></script>
+<script src="./js.js"></script>
+
 </html>
