@@ -2,7 +2,7 @@
 $servername = "sql307.byetcluster.com";
 $username = "your_username";
 $password = "your_password";
-$dbname = "quanao";
+$dbname = "shopquanao";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);

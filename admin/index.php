@@ -76,6 +76,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'them_anh_sp':
 
             break;
+
         default:
             include "main.php";
             break;
