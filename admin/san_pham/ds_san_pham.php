@@ -1,5 +1,5 @@
 <h1 class="text-center">Toàn bộ sản phẩm</h1>
-<a href="index.php?act=them_sp">Thêm sản phẩm</a>
+<a href="index.php?act=them_sp"><button class="btn btn-primary">Thêm sản phẩm</button></a>
 <table class="table bang table-hover">
     <thead>
         <tr>

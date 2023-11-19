@@ -30,10 +30,8 @@ function size_san_pham($id_sanpham)
   $sql = "SELECT
     sct.id_kichthuoc,
     kt.ten_kichthuoc,
-    GROUP_CONCAT(sct.id_sanpham_chitiet) AS id_sanpham_chitiet,
-    GROUP_CONCAT(sct.id_sanpham) AS id_sanpham,
-    GROUP_CONCAT(sct.id_mau) AS id_mau,
-    GROUP_CONCAT(sct.so_luong) AS so_luong
+    GROUP_CONCAT(sct.id_sanpham) AS id_sanpham
+
   FROM
     sanpham_chitiet sct
   JOIN
@@ -116,7 +114,26 @@ function edit_san_pham($id_sanpham, $ten_sanpham, $gia, $mota, $danh_muc_con)
 
   pdo_execute($sql);
 }
-function them_kich_thuoc($ten){
-  $sql = "insert into kich_thuoc(id_kichthuoc, ten_kichthuoc) values (null,'$ten')";
+
+function them_anh_sp($id_mau, $ten_anh){
+  $sql = "insert into anh(id_anh,img_anh,id_mau) values (null, '$ten_anh', $id_mau )";
+  pdo_execute($sql);
+}
+function xoa_anh_sp($id_anh){
+  $sql= "delete from anh where id_anh = $id_anh";
+  pdo_execute($sql);
+}
+function all_size(){
+  $sql = "select * from kich_thuoc";
+  $kq = pdo_query($sql);
+  return $kq;
+}
+function them_kich_thuoc_sp($id_sanpham, $id_kichthuoc){
+  $sql = "insert into sanpham_chitiet(id_sanpham_chitiet, id_sanpham, id_kichthuoc, id_mau, so_luong) values (null, $id_sanpham, $id_kichthuoc, null, null)";
+  pdo_execute($sql);
+}
+function xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham){
+  $sql = "delete from sanpham_chitiet where id_sanpham = $id_sanpham and id_kichthuoc = $id_kichthuoc";
+
   pdo_execute($sql);
 }

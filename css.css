@@ -626,7 +626,7 @@ main .banner2 .content {
   display: block;
 }
 .modal#modal_gio_hang {
-  height: 687px;
+  height: 108%;
 }
 .modal_gio_hang .modal-footer .tien {
   display: flex;

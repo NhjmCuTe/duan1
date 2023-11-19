@@ -101,6 +101,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $all_kich_thuoc = all_kich_thuoc();
             include "kich_thuoc/ds_kich_thuoc.php";
             break;
+
         default:
             include "main.php";
             break;

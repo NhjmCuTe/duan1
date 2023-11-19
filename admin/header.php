@@ -22,7 +22,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="admin/src/assets/images/logos/dark-logo.svg" width="180" alt="" />
+                        <img src="../img/logo.png" width="130" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -48,7 +48,7 @@
                             <span class="hide-menu">WEBSITE</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="index.php" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=ds_danhmuc" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -64,11 +64,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=ds_kichthuoc" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-cards"></i>
                                 </span>
-                                <span class="hide-menu">Card</span>
+                                <span class="hide-menu">Kích thước</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
