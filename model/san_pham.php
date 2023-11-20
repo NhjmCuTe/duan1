@@ -21,7 +21,8 @@ function all_san_pham()
 }
 function xoa_san_pham($id_sanpham)
 {
-  $sql = "delete from san_pham where id_sanpham = $id_sanpham";
+  $sql = "delete from san_pham where id_sanpham = $id_sanpham;
+  delete from sanpham_chitiet where id_sanpham = $id_sanpham";
   pdo_execute($sql);
 }
 function size_san_pham($id_sanpham)

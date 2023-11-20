@@ -138,12 +138,42 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             if (isset($_POST['them_dm']) && $_POST['them_dm']) {
                 insert_danhmuc($_POST['danh_muc']);
             }
-            if (isset($_GET['id_danhmuc_xoa']) && $_GET['id_danhmuc_xoa']) {
+            if (isset($_GET['id_danhmuc_xoa']) && $_GET['id_danhmuc_xoa'] != '') {
+                delete_danhmuc($_GET['id_danhmuc_xoa']);
+            }
+            if (isset($_GET['id_danhmuc_sua']) && $_GET['id_danhmuc_sua'] != '') {
+                $one_danhmuc = loadOne_danhmuc($_GET['id_danhmuc_sua']);
+            }
+            if (isset($_POST['edit_danhmuc']) && $_POST['edit_danhmuc']) {
+                $id_danhmuc = $_POST['id_danhmuc'];
+                $ten_danhmuc = $_POST['ten_dm'];
+                update_danhmuc($id_danhmuc, $ten_danhmuc);
             }
             $ds_danhmuc = danh_muc();
             include "danhmuc/ds_danhmuc.php";
             break;
         case 'ds_danhmuc_con':
+            $danh_muc_hien_tai = '';
+            if (isset($_POST['them_dm_con']) && $_POST['them_dm_con']) {
+                $ten_dm_con = $_POST['danh_muc_con'];
+                $id_danhmuc = $_POST['id_danhmuc'];
+                insert_danhmuccon($ten_dm_con, $id_danhmuc);
+            }
+            if(isset($_GET['id_dm_con_xoa'])&&$_GET['id_dm_con_xoa']){
+                delete_danhmuccon($_GET['id_dm_con_xoa']);
+            }
+            if(isset($_GET['id_dm_con_sua'])&&$_GET['id_dm_con_sua']){
+                $one_danhmuc_con =  loadOne_danhmuccon($_GET['id_dm_con_sua']);
+            }
+            if(isset($_POST['edit_danhmuc_con'])&&$_POST['edit_danhmuc_con']){
+                $id_dm_con = $_POST['id_danhmuc_con'];
+                $ten_dm_con = $_POST['ten_dm_con'];
+                update_danhmuccon($id_dm_con,$ten_dm_con);
+            }
+            if (isset($_GET['id_danhmuc']) && $_GET['id_danhmuc']) {
+                $danh_muc_hien_tai = $_GET['id_danhmuc'];
+                $ds_danh_muc_con = loadAll_danhmuccon($_GET['id_danhmuc']);
+            }
             include "danhmuc/ds_danhmuc_con.php";
             break;
         default:
