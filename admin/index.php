@@ -23,24 +23,48 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'chi_tiet_sp':
             $all_size = all_size();
+            $id_sp_dang_xem = '';
+            if(isset($_GET['id_mau_edit'])&&$_GET['id_mau_edit']!=''){
+                $load_1_mau = load_1_mau($_GET['id_mau_edit']);
+            }
+            if(isset($_POST['edit_mau'])&&$_POST['edit_mau']){
+                $id_mau = $_POST['id_mau'];
+                $ten_mau = $_POST['ten_mau'];
+                $ten_anh_mau = $_FILES['img_mau']['name'];
+                edit_mau($id_mau,$ten_mau,$ten_anh_mau);
+                if(move_uploaded_file($_FILES['img_mau']['tmp_name'], '../'.$duong_dan_anh.$ten_anh_mau));
+            }
             if (isset($_POST['them_size']) && $_POST['them_size']) {
                 $id_sanpham = $_GET['id_sp'];
                 $id_kichthuoc = $_POST['kich_thuoc'];
-                them_kich_thuoc_sp($id_sanpham,$id_kichthuoc);
+                them_kich_thuoc_sp($id_sanpham, $id_kichthuoc);
             }
-            if(isset($_GET['id_kichthuoc'])&&$_GET['id_kichthuoc']!=''){
+            if (isset($_GET['id_kichthuoc']) && $_GET['id_kichthuoc'] != '') {
                 $id_kichthuoc = $_GET['id_kichthuoc'];
                 $id_sanpham = $_GET['id_sp'];
-                xoa_kichthuoc_sp($id_kichthuoc,$id_sanpham);
+                xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham);
+            }
+            if (isset($_GET['id_mau_xoa']) && $_GET['id_mau_xoa'] != '') {
+                xoa_mau_sp($_GET['id_mau_xoa']);
+            }
+            if (isset($_POST['them_mau']) && $_POST['them_mau']) {
+                $id_sanpham = $_GET['id_sp'];
+                $ten_mau = $_POST['ten_mau'];
+                $ten_anh = $_FILES['anh_mau']['name'];
+                if(move_uploaded_file($_FILES['anh_mau']['tmp_name'],'../'. $duong_dan_anh.$ten_anh));
+                them_mau_sp($id_sanpham, $ten_mau, $ten_anh);
             }
             if (isset($_GET['id_sp']) && $_GET['id_sp'] != '') {
+                $id_sp_dang_xem = $_GET['id_sp'];
                 $size_sp = size_san_pham($_GET['id_sp']);
                 $mau_sp = mau_san_pham($_GET['id_sp']);
                 include "san_pham/chi_tiet_sp.php";
             }
             break;
         case 'anh_theo_mau':
+            $id_mau_dang_xem='';
             if (isset($_GET['id_mau']) && isset($_GET['them_anh']) && isset($_POST['them_anh'])) {
+
                 $id_mau = $_GET['id_mau'];
                 $ten_anh = $_FILES['img']['name'];
                 if (move_uploaded_file($_FILES['img']['tmp_name'], '../' . $duong_dan_anh . $ten_anh));
@@ -50,6 +74,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 xoa_anh_sp($_GET['id_anh_xoa']);
             }
             if (isset($_GET['id_mau']) && $_GET['id_mau'] != '') {
+                $id_mau_dang_xem = $_GET['id_mau'];
                 $anh_theo_mau = anh_theo_mau($_GET['id_mau']);
                 include "san_pham/anh_theo_mau.php";
             }
@@ -61,8 +86,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $gia = $_POST['gia'];
                 $mota = $_POST['mo_ta'];
                 $danh_muc_con = $_POST['danh_muc_con'];
-
                 them_sp($ten, $gia, $mota, $danh_muc_con);
+                header('location: index.php?act=ds_san_pham');
             }
             include "san_pham/them_san_pham.php";
             break;
@@ -92,10 +117,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "san_pham/them_kich_thuoc.php";
             break;
         case 'ds_kichthuoc':
-            if(isset($_POST['them_kich_thuoc'])&&$_POST['them_kich_thuoc']){
+            if (isset($_POST['them_kich_thuoc']) && $_POST['them_kich_thuoc']) {
                 them_kich_thuoc($_POST['kich_thuoc']);
             }
-            if(isset($_GET['id_kichthuoc_xoa'])&&$_GET['id_kichthuoc_xoa']!=''){
+            if (isset($_GET['id_kt_edit']) && $_GET['id_kt_edit'] != '') {
+                $one_kich_thuoc = one_kich_thuoc($_GET['id_kt_edit']);
+            }
+            if (isset($_POST['edit_kich_thuoc']) && $_POST['edit_kich_thuoc']) {
+                $id_kichthuoc = $_POST['id_kichthuoc'];
+                $ten_kich_thuoc = $_POST['ten_kt'];
+                edit_kich_thuoc($id_kichthuoc, $ten_kich_thuoc);
+            }
+            if (isset($_GET['id_kichthuoc_xoa']) && $_GET['id_kichthuoc_xoa'] != '') {
                 xoa_kichthuoc($_GET['id_kichthuoc_xoa']);
             }
             $all_kich_thuoc = all_kich_thuoc();
