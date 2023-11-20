@@ -24,15 +24,15 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'chi_tiet_sp':
             $all_size = all_size();
             $id_sp_dang_xem = '';
-            if(isset($_GET['id_mau_edit'])&&$_GET['id_mau_edit']!=''){
+            if (isset($_GET['id_mau_edit']) && $_GET['id_mau_edit'] != '') {
                 $load_1_mau = load_1_mau($_GET['id_mau_edit']);
             }
-            if(isset($_POST['edit_mau'])&&$_POST['edit_mau']){
+            if (isset($_POST['edit_mau']) && $_POST['edit_mau']) {
                 $id_mau = $_POST['id_mau'];
                 $ten_mau = $_POST['ten_mau'];
                 $ten_anh_mau = $_FILES['img_mau']['name'];
-                edit_mau($id_mau,$ten_mau,$ten_anh_mau);
-                if(move_uploaded_file($_FILES['img_mau']['tmp_name'], '../'.$duong_dan_anh.$ten_anh_mau));
+                edit_mau($id_mau, $ten_mau, $ten_anh_mau);
+                if (move_uploaded_file($_FILES['img_mau']['tmp_name'], '../' . $duong_dan_anh . $ten_anh_mau));
             }
             if (isset($_POST['them_size']) && $_POST['them_size']) {
                 $id_sanpham = $_GET['id_sp'];
@@ -51,7 +51,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $id_sanpham = $_GET['id_sp'];
                 $ten_mau = $_POST['ten_mau'];
                 $ten_anh = $_FILES['anh_mau']['name'];
-                if(move_uploaded_file($_FILES['anh_mau']['tmp_name'],'../'. $duong_dan_anh.$ten_anh));
+                if (move_uploaded_file($_FILES['anh_mau']['tmp_name'], '../' . $duong_dan_anh . $ten_anh));
                 them_mau_sp($id_sanpham, $ten_mau, $ten_anh);
             }
             if (isset($_GET['id_sp']) && $_GET['id_sp'] != '') {
@@ -62,7 +62,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             break;
         case 'anh_theo_mau':
-            $id_mau_dang_xem='';
+            $id_mau_dang_xem = '';
             if (isset($_GET['id_mau']) && isset($_GET['them_anh']) && isset($_POST['them_anh'])) {
 
                 $id_mau = $_GET['id_mau'];
@@ -134,7 +134,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $all_kich_thuoc = all_kich_thuoc();
             include "kich_thuoc/ds_kich_thuoc.php";
             break;
-
+        case 'ds_danhmuc':
+            if (isset($_POST['them_dm']) && $_POST['them_dm']) {
+                insert_danhmuc($_POST['danh_muc']);
+            }
+            if (isset($_GET['id_danhmuc_xoa']) && $_GET['id_danhmuc_xoa']) {
+            }
+            $ds_danhmuc = danh_muc();
+            include "danhmuc/ds_danhmuc.php";
+            break;
+        case 'ds_danhmuc_con':
+            include "danhmuc/ds_danhmuc_con.php";
+            break;
         default:
             include "main.php";
             break;
