@@ -10,13 +10,13 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./img/bst-academy-top-banner-desktop.png" class="d-block w-100" alt="...">
+                    <img src="img\banner-top-trang-chu-1-slide-19.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="./img/homewear-top-desktop_2880x960_1.png" class="d-block w-100" alt="...">
+                    <img src="img\banner-top-trang-chu-2-slide-20.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="./img/uu-dai-bst-ni_top-banner_desktop.png" class="d-block w-100" alt="...">
+                    <img src="img\uu-dai-bst-ni_top-banner_desktop.png" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -31,10 +31,3 @@
             </button>
         </div>
     </div>
-    <main>
-
-    </main>
-    <footer></footer>
-</body>
-
-</html>

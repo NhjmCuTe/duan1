@@ -503,7 +503,7 @@ main .banner2 .content {
   display: block !important;
   visibility: hidden;
   transform: translateX(50%);
-  transition: all 0.7s ease-in;
+  transition: all 0.8s ease-in-out;
 }
 #modal_gio_hang .modal-dialog {
   margin-right: 0;
@@ -885,7 +885,7 @@ header .tiep_tuc_mua a:hover {
   text-decoration: none;
   display: block;
   /* color: #333f48; */
-  font-weight: 400;
+  font-weight: 500;
   /* font-size: 14px; */
   line-height: 1.43;
   margin: 0 0 4px;
@@ -943,7 +943,7 @@ header .tiep_tuc_mua a:hover {
 .canifalife,
 .title-bst {
   background-color: #fafafa;
-  padding: 20px;
+  padding-bottom: 20px;
 }
 .canifalife-item {
   text-align: center;
@@ -1061,4 +1061,34 @@ header .tiep_tuc_mua a:hover {
   font-weight: 700;
   font-size: 14px;
   line-height: 22px;
+}
+.bst-thu-dong .bang_mau {
+  display: flex;
+}
+.bst-thu-dong .bang_mau .anh {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid var(--color_vien);
+}
+.bst-thu-dong .bang_mau .chon_mau {
+  border: 1px solid var(--color);
+}
+.bst-thu-dong .bang_mau img {
+  width: 100%;
+  transform: scale(1.5);
+}
+.bst-thu-dong .anh:hover {
+  border: 1px solid var(--color);
+}
+.bst-thu-dong .img{
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+.bst-thu-dong .img img{
+height: 100%;
+ object-fit: cover;
 }

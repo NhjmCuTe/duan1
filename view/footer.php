@@ -1,6 +1,6 @@
-
+<div class="footer container">
 <div class="title-bst">
-        <h2>CANIFALIFE</h2>
+        <h2>ƯU ĐÃI</h2>
         <div class="online">
           <button>Xem thêm</button><i class="fas fa-angle-double-right"></i>
         </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="canifalife-item">
           <a href="">
-            <img src="img/game-online-3.webp" alt="" />
+            <img src="img/untitled-2-01_1.png"  alt="" />
           </a>
           <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
             CANIFA
@@ -35,7 +35,7 @@
         </div>
         <div class="canifalife-item">
           <a href="">
-            <img src="img/game-online-3.webp" alt="" />
+            <img src="img\list_image_tablet1698379402.png" alt="" />
           </a>
           <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
             CANIFA
@@ -169,6 +169,12 @@
         </div>
       </div>
   </footer>
+  </div>
 </body>
-<script src="script.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="js/script.js"></script>
+<script src="js/home.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/san_pham.js"></script>
+
 </html>

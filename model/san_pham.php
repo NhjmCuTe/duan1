@@ -28,17 +28,16 @@ function xoa_san_pham($id_sanpham)
 function size_san_pham($id_sanpham)
 {
   $sql = "SELECT
-    sct.id_kichthuoc,
-    kt.ten_kichthuoc,
-    GROUP_CONCAT(sct.id_sanpham) AS id_sanpham
+  sct.id_kichthuoc,
+  kt.ten_kichthuoc
 
-  FROM
-    sanpham_chitiet sct
-  JOIN
-    kich_thuoc kt ON sct.id_kichthuoc = kt.id_kichthuoc
-  WHERE
-    sct.id_sanpham = $id_sanpham
-  GROUP BY
+FROM
+  sanpham_chitiet sct
+JOIN
+  kich_thuoc kt ON sct.id_kichthuoc = kt.id_kichthuoc
+WHERE
+  sct.id_sanpham = $id_sanpham
+GROUP BY
     sct.id_kichthuoc, kt.ten_kichthuoc;
   ";
   $kq = pdo_query($sql);
@@ -75,7 +74,6 @@ function anh_theo_mau($id_mau)
     anh
   WHERE
     id_mau = $id_mau
-    ORDER BY id_anh DESC
   ";
 
   $kq = pdo_query($sql);
@@ -178,4 +176,47 @@ function edit_mau($id_mau, $ten_mau, $ten_anh = '')
   $sql .= "where id_mau = $id_mau";
   // echo $sql;die;
   pdo_execute($sql);
+}
+function sanpham_home()
+{
+  $sql = "SELECT sp.id_sanpham, sp.ten_sanpham,sp.gia, GROUP_CONCAT(m.img_mau) AS img_mau
+  FROM san_pham sp
+  JOIN sanpham_chitiet c ON sp.id_sanpham = c.id_sanpham
+  JOIN mau m ON c.id_mau = m.id_mau 
+  GROUP BY sp.id_sanpham, sp.ten_sanpham
+  ORDER BY sp.id_sanpham DESC LIMIT 8
+  ";
+  return pdo_query($sql);
+}
+function chitiet_sp($id_sanpham)
+{
+  $sql = "SELECT
+  sp.id_sanpham,
+  sp.ten_sanpham,
+  sp.mo_ta,
+  sp.gia,
+  GROUP_CONCAT(DISTINCT kt.ten_kichthuoc ) AS ten_kichthuoc,
+  GROUP_CONCAT(DISTINCT m.id_mau ORDER BY m.id_mau) AS id_mau,
+  GROUP_CONCAT(DISTINCT m.ten_mau ORDER BY m.id_mau) AS ten_mau,
+  GROUP_CONCAT(DISTINCT m.img_mau ORDER BY m.id_mau) AS img_mau,
+  (
+      SELECT GROUP_CONCAT(DISTINCT a.img_anh)
+      FROM anh a
+      WHERE a.id_mau = MIN(m.id_mau)
+  ) AS all_anh
+FROM
+  san_pham sp
+LEFT JOIN sanpham_chitiet sct ON
+  sp.id_sanpham = sct.id_sanpham
+LEFT JOIN kich_thuoc kt ON
+  sct.id_kichthuoc = kt.id_kichthuoc
+LEFT JOIN mau m ON
+  m.id_mau = sct.id_mau
+WHERE
+  sp.id_sanpham = $id_sanpham
+GROUP BY
+  sp.id_sanpham, sp.ten_sanpham, sp.mo_ta, sp.gia;
+
+";
+  return pdo_query_one($sql);
 }

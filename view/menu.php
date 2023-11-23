@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.js"></script> -->
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
 
     <link rel="stylesheet" href="css/css.css" />
     <title>Document</title>
@@ -31,7 +31,7 @@
     <header class="container-fluid py-4 px-5">
         <div class="row header">
             <div class="col-2 logo">
-                <img src="./img/logo.png" alt="">
+                <a href="index.php"><img src="./img/logo.png" alt=""></a>
             </div>
             <div class="col-4 menu">
                 <ul>
@@ -42,10 +42,10 @@
                             <div class="menu_con_2">
                                 <?php foreach ($all_danhmuc_menu as $one_dm) {
                                     $mang_dm_con = explode(',', $one_dm['danh_muc_con']);
-                                    echo '<li><a href="">'.$one_dm['ten_danhmuc'].'</a>
+                                    echo '<li><a href="">' . $one_dm['ten_danhmuc'] . '</a>
                                     <ul>';
                                     foreach ($mang_dm_con as $dm_con) {
-                                        echo '<li><a href="">'.$dm_con.'</a></li>';
+                                        echo '<li><a href="">' . $dm_con . '</a></li>';
                                     }
                                     echo '</ul>
                                     </li>';
@@ -80,160 +80,4 @@
         </div>
     </header>
 
-    <!-- Modal -->
-    <div class="modal modal_gio_hang" id="modal_gio_hang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Giỏ hàng</h1>
-                    <button type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <div class="thong_bao">
-                        <i class="fa-regular fa-truck-fast"></i><span>Miễn phí vận chuyển toàn bộ đơn hàng</span>
-                    </div>
-                    <div class="san_pham">
-                        <div class="row box">
-                            <div class="col-3 anh">
-                                <i class="fa-solid fa-xmark"></i><a href=""><img src="./img/8ta23s003-sb120-1.png" alt="" /></a>
-                            </div>
-                            <div class="col-9 info">
-                                <a href="">
-                                    <p>Quần leggings bé gái</p>
-                                </a>
-                                <div class="thong_tin">
-                                    <div class="mau">
-                                        <img src="./img/8ta23s003-sb120-1.png" alt="" />
-                                    </div>
-                                    <span>Xanh</span>|<span>XL</span>
-                                </div>
-
-                                <div class="gia">
-                                    <h5>499.000 đ</h5>
-                                    <div class="so_luong">
-                                        <button class="bt1">
-                                            <i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" /><button class="bt2">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row box">
-                            <div class="col-3 anh">
-                                <i class="fa-solid fa-xmark"></i><a href=""><img src="./img/8ta23s003-sb120-1.png" alt="" /></a>
-                            </div>
-                            <div class="col-9 info">
-                                <a href="">
-                                    <p>Quần leggings bé gái</p>
-                                </a>
-                                <div class="thong_tin">
-                                    <div class="mau">
-                                        <img src="./img/8ta23s003-sb120-1.png" alt="" />
-                                    </div>
-                                    <span>Xanh</span>|<span>XL</span>
-                                </div>
-
-                                <div class="gia">
-                                    <h5>499.000 đ</h5>
-                                    <div class="so_luong">
-                                        <button class="bt1">
-                                            <i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" /><button class="bt2">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row box">
-                            <div class="col-3 anh">
-                                <i class="fa-solid fa-xmark"></i><a href=""><img src="./img/8ta23s003-sb120-1.png" alt="" /></a>
-                            </div>
-                            <div class="col-9 info">
-                                <a href="">
-                                    <p>Quần leggings bé gái</p>
-                                </a>
-                                <div class="thong_tin">
-                                    <div class="mau">
-                                        <img src="./img/8ta23s003-sb120-1.png" alt="" />
-                                    </div>
-                                    <span>Xanh</span>|<span>XL</span>
-                                </div>
-
-                                <div class="gia">
-                                    <h5>499.000 đ</h5>
-                                    <div class="so_luong">
-                                        <button class="bt1">
-                                            <i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" /><button class="bt2">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row box">
-                            <div class="col-3 anh">
-                                <i class="fa-solid fa-xmark"></i><a href=""><img src="./img/8ta23s003-sb120-1.png" alt="" /></a>
-                            </div>
-                            <div class="col-9 info">
-                                <a href="">
-                                    <p>Quần leggings bé gái</p>
-                                </a>
-                                <div class="thong_tin">
-                                    <div class="mau">
-                                        <img src="./img/8ta23s003-sb120-1.png" alt="" />
-                                    </div>
-                                    <span>Xanh</span>|<span>XL</span>
-                                </div>
-
-                                <div class="gia">
-                                    <h5>499.000 đ</h5>
-                                    <div class="so_luong">
-                                        <button class="bt1">
-                                            <i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" /><button class="bt2">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row box">
-                            <div class="col-3 anh">
-                                <i class="fa-solid fa-xmark"></i><a href=""><img src="./img/8ta23s003-sb120-1.png" alt="" /></a>
-                            </div>
-                            <div class="col-9 info">
-                                <a href="">
-                                    <p>Quần leggings bé gái</p>
-                                </a>
-                                <div class="thong_tin">
-                                    <div class="mau">
-                                        <img src="./img/8ta23s003-sb120-1.png" alt="" />
-                                    </div>
-                                    <span>Xanh</span>|<span>XL</span>
-                                </div>
-
-                                <div class="gia">
-                                    <h5>499.000 đ</h5>
-                                    <div class="so_luong">
-                                        <button class="bt1">
-                                            <i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" /><button class="bt2">
-                                            <i class="fa-solid fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="tien"><span class="tam_tinh">Tạm tính:</span><span class="gia">4.200.000 đ</span></div>
-                    <div class="mua">
-                        <a href=""><button>Thanh toán</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   <?php include "view/gio_hang.php" ?>
