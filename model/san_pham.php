@@ -13,11 +13,12 @@ function all_san_pham()
   JOIN
     danh_muc_con dmc ON sp.id_danhmuc_con = dmc.id_danhmuc_con
   JOIN
-    danh_muc dm ON dmc.id_danhmuc = dm.id_danhmuc
-    ORDER BY sp.id_sanpham DESC
+    danh_muc dm ON dmc.id_danhmuc = dm.id_danhmuc;
   ";
   $kq = pdo_query($sql);
   return $kq;
+  var_dump($kq);
+  die;
 }
 function xoa_san_pham($id_sanpham)
 {
@@ -73,8 +74,7 @@ function anh_theo_mau($id_mau)
   FROM
     anh
   WHERE
-    id_mau = $id_mau
-    ORDER BY id_anh DESC
+    id_mau = $id_mau;
   ";
 
   $kq = pdo_query($sql);
@@ -82,7 +82,7 @@ function anh_theo_mau($id_mau)
 }
 function them_sp($ten, $gia, $mota, $id_dm_con)
 {
-  $sql = "insert into san_pham( ten_sanpham, gia, mo_ta, id_danhmuc_con) values ('$ten', $gia, '$mota',$id_dm_con)";
+  $sql = "insert into san_pham(id_sanpham, ten_sanpham, gia, mo_ta, id_danhmuc_con) values (null, '$ten', $gia, '$mota',$id_dm_con)";
 
   pdo_execute($sql);
 }
@@ -115,66 +115,25 @@ function edit_san_pham($id_sanpham, $ten_sanpham, $gia, $mota, $danh_muc_con)
   pdo_execute($sql);
 }
 
-function them_anh_sp($id_mau, $ten_anh)
-{
-  $sql = "insert into anh(img_anh,id_mau) values ('$ten_anh', $id_mau )";
+function them_anh_sp($id_mau, $ten_anh){
+  $sql = "insert into anh(id_anh,img_anh,id_mau) values (null, '$ten_anh', $id_mau )";
   pdo_execute($sql);
 }
-function xoa_anh_sp($id_anh)
-{
-  $sql = "delete from anh where id_anh = $id_anh";
+function xoa_anh_sp($id_anh){
+  $sql= "delete from anh where id_anh = $id_anh";
   pdo_execute($sql);
 }
-function all_size()
-{
+function all_size(){
   $sql = "select * from kich_thuoc";
   $kq = pdo_query($sql);
   return $kq;
 }
-function them_kich_thuoc_sp($id_sanpham, $id_kichthuoc)
-{
-  $sql = "insert into sanpham_chitiet( id_sanpham, id_kichthuoc ) values ( $id_sanpham, $id_kichthuoc)";
+function them_kich_thuoc_sp($id_sanpham, $id_kichthuoc){
+  $sql = "insert into sanpham_chitiet(id_sanpham_chitiet, id_sanpham, id_kichthuoc, id_mau, so_luong) values (null, $id_sanpham, $id_kichthuoc, null, null)";
   pdo_execute($sql);
 }
-function xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham)
-{
+function xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham){
   $sql = "delete from sanpham_chitiet where id_sanpham = $id_sanpham and id_kichthuoc = $id_kichthuoc";
 
-  pdo_execute($sql);
-}
-function xoa_mau_sp($id_mau)
-{
-  $sql = "DELETE FROM sanpham_chitiet WHERE id_mau = $id_mau;
-  DELETE FROM mau WHERE id_mau = $id_mau;
-  DELETE FROM anh WHERE id_mau = $id_mau";
-
-  pdo_execute($sql);
-}
-function them_mau_sp($id_sanpham, $ten_mau, $anh_mau)
-{
-  $sql = "-- Thêm màu mới vào bảng mau
-  INSERT INTO mau (ten_mau, img_mau) VALUES ('$ten_mau', '$anh_mau');
-  
-  -- Lấy id_mau của màu vừa thêm
-  SET @id_mau = LAST_INSERT_ID();
-  
-  -- Thêm thông tin chi tiết về màu vào bảng sanpham_chitiet
-  INSERT INTO sanpham_chitiet (id_sanpham, id_mau) VALUES ($id_sanpham, @id_mau)";
-  pdo_execute($sql);
-}
-function load_1_mau($id_mau)
-{
-  $sql = "select * from mau where id_mau = $id_mau";
-  $kq = pdo_query_one($sql);
-  return $kq;
-}
-function edit_mau($id_mau, $ten_mau, $ten_anh = '')
-{
-  $sql = "update mau set ten_mau = '$ten_mau' ";
-  if ($ten_anh != '') {
-    $sql .= ",img_mau = '$ten_anh' ";
-  }
-  $sql .= "where id_mau = $id_mau";
-  // echo $sql;die;
   pdo_execute($sql);
 }

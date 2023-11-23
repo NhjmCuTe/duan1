@@ -1,7 +1,7 @@
 <h1 class="text-center">Sửa sản phẩm</h1>
 
 <form class="pt-9 px-9" action="index.php?act=edit_san_pham" method="post">
-    <?php extract($load_1_sp) ?>
+    <?php var_dump($load_1_sp); extract($load_1_sp) ?>
     <div class="form-floating mb-3">
         <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled value="<?= isset($id_sanpham)?$id_sanpham:'' ?>">
         <label for="floatingInputDisabled">ID sản phẩm</label>
