@@ -1,13 +1,13 @@
 <?php
 ob_start();
+include "header.php";
+
 include "../model/pdo.php";
 include "../global.php";
 include "../model/san_pham.php";
 include "../model/danh_muc.php";
 include "../model/kich_thuoc.php";
-
-
-include "header.php";
+include "../model/tai_khoan.php";
 
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -26,12 +26,12 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             if (isset($_POST['them_size']) && $_POST['them_size']) {
                 $id_sanpham = $_GET['id_sp'];
                 $id_kichthuoc = $_POST['kich_thuoc'];
-                them_kich_thuoc_sp($id_sanpham,$id_kichthuoc);
+                them_kich_thuoc_sp($id_sanpham, $id_kichthuoc);
             }
-            if(isset($_GET['id_kichthuoc'])&&$_GET['id_kichthuoc']!=''){
+            if (isset($_GET['id_kichthuoc']) && $_GET['id_kichthuoc'] != '') {
                 $id_kichthuoc = $_GET['id_kichthuoc'];
                 $id_sanpham = $_GET['id_sp'];
-                xoa_kichthuoc_sp($id_kichthuoc,$id_sanpham);
+                xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham);
             }
             if (isset($_GET['id_sp']) && $_GET['id_sp'] != '') {
                 $size_sp = size_san_pham($_GET['id_sp']);
@@ -92,14 +92,73 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "san_pham/them_kich_thuoc.php";
             break;
         case 'ds_kichthuoc':
-            if(isset($_POST['them_kich_thuoc'])&&$_POST['them_kich_thuoc']){
+            if (isset($_POST['them_kich_thuoc']) && $_POST['them_kich_thuoc']) {
                 them_kich_thuoc($_POST['kich_thuoc']);
             }
-            if(isset($_GET['id_kichthuoc_xoa'])&&$_GET['id_kichthuoc_xoa']!=''){
+            if (isset($_GET['id_kichthuoc_xoa']) && $_GET['id_kichthuoc_xoa'] != '') {
                 xoa_kichthuoc($_GET['id_kichthuoc_xoa']);
             }
             $all_kich_thuoc = all_kich_thuoc();
             include "kich_thuoc/ds_kich_thuoc.php";
+            break;
+        case 'ds_danhmuc':
+            if (isset($_POST['them_dm']) && $_POST['them_dm']) {
+                insert_danhmuc($_POST['danh_muc']);
+            }
+            if (isset($_GET['id_danhmuc_xoa']) && $_GET['id_danhmuc_xoa'] != '') {
+                delete_danhmuc($_GET['id_danhmuc_xoa']);
+            }
+            if (isset($_GET['id_danhmuc_sua']) && $_GET['id_danhmuc_sua'] != '') {
+                $one_danhmuc = loadOne_danhmuc($_GET['id_danhmuc_sua']);
+            }
+            if (isset($_POST['edit_danhmuc']) && $_POST['edit_danhmuc']) {
+                $id_danhmuc = $_POST['id_danhmuc'];
+                $ten_danhmuc = $_POST['ten_dm'];
+                update_danhmuc($id_danhmuc, $ten_danhmuc);
+            }
+            $ds_danhmuc = danh_muc();
+            include "danhmuc/ds_danhmuc.php";
+            break;
+
+        case 'ds_taikhoan':
+            if (isset($_POST['them_tk']) && $_POST['them_tk']) {
+                $user = $_POST['username'];
+                $pass = $_POST['password'];
+                $email = $_POST['email'];
+                $sdt = $_POST['sdt'];
+                $address = $_POST['address'];
+                insert_taikhoan($user, $pass, $email, $sdt, $address);
+            }
+            if (isset($_GET['id_tk_xoa']) && $_GET['id_tk_xoa']) {
+                xoa_tk($_GET['id_tk_xoa']);
+            }
+            $ds_taikhoan = all_taikhoan();
+            include "taikhoan/ds_taikhoan.php";
+            break;
+
+        case 'ds_danhmuc_con':
+            $danh_muc_hien_tai = '';
+            if (isset($_POST['them_dm_con']) && $_POST['them_dm_con']) {
+                $ten_dm_con = $_POST['danh_muc_con'];
+                $id_danhmuc = $_POST['id_danhmuc'];
+                insert_danhmuccon($ten_dm_con, $id_danhmuc);
+            }
+            if(isset($_GET['id_dm_con_xoa'])&&$_GET['id_dm_con_xoa']){
+                delete_danhmuccon($_GET['id_dm_con_xoa']);
+            }
+            if(isset($_GET['id_dm_con_sua'])&&$_GET['id_dm_con_sua']){
+                $one_danhmuc_con =  loadOne_danhmuccon($_GET['id_dm_con_sua']);
+            }
+            if(isset($_POST['edit_danhmuc_con'])&&$_POST['edit_danhmuc_con']){
+                $id_dm_con = $_POST['id_danhmuc_con'];
+                $ten_dm_con = $_POST['ten_dm_con'];
+                update_danhmuccon($id_dm_con,$ten_dm_con);
+            }
+            if (isset($_GET['id_danhmuc']) && $_GET['id_danhmuc']) {
+                $danh_muc_hien_tai = $_GET['id_danhmuc'];
+                $ds_danh_muc_con = loadAll_danhmuccon($_GET['id_danhmuc']);
+            }
+            include "danhmuc/ds_danhmuc_con.php";
             break;
 
         default:
@@ -110,8 +169,5 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
     include "main.php";
 }
-
-
-
 
 include "footer.php";
