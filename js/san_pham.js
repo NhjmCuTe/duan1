@@ -124,15 +124,15 @@ productDivs.forEach(function (div) {
         slickCarousel.slick();
         slickCarousel_2.slick();
       })
-      .catch((error) => {
-        console.error("Có lỗi xảy ra:", error);
-      });
+      
   });
 });
 
 const bang_mau = document.querySelectorAll(".thong_tin_sp .bang_mau .anh");
 const bang_mau_1 = document.querySelectorAll(".thong_tin_sp .bang_mau img");
 const mau_sac = document.querySelector(".mau span");
+
+if(bang_mau && bang_mau_1 && mau_sac){
 
 bang_mau[0].classList.add("chon_mau");
 
@@ -147,53 +147,6 @@ bang_mau.forEach((mau) => {
     mau.classList.add("chon_mau");
   });
 });
-const them_vao_gio = document.querySelector(".them_vao_gio button");
-const thong_bao = document.querySelector(".kich_co .chua_chon_size");
+}
 
-them_vao_gio.addEventListener("click", () => {
-  if (kich_co.innerHTML == "") {
-    thong_bao.style.opacity = 1;
-    thong_bao.style.visibility = "visible";
-  } else {
-    const id_sp_ht = document.querySelector(
-      ".thong_tin_sp .ma_sp span"
-    ).innerHTML;
-    const ten_sp_ht = document.querySelector(
-      ".thong_tin_sp .name_san_pham h5"
-    ).innerHTML;
-    const gia_ht = document.querySelector(".thong_tin_sp .gia").dataset.gia;
-    const id_mau_ht = document.querySelector(
-      ".thong_tin_sp .mau span"
-    ).innerHTML;
-    const ten_img_ht = document.querySelector(
-      ".thong_tin_sp .bang_mau .anh.chon_mau img"
-    ).src;
-    const kt_ht = document.querySelector(
-      ".thong_tin_sp .kich_co .size"
-    ).innerHTML;
-    // Dữ liệu bạn muốn lưu vào session
-    const dataToSave = {
-      id_sp: id_sp_ht,
-      ten_sp: ten_sp_ht,
-      gia: gia_ht,
-      id_mau: id_mau_ht,
-      ten_img: ten_img_ht,
-      kt: kt_ht,
-    };
 
-    console.log(dataToSave);
-    // Sử dụng XMLHttpRequest để gửi yêu cầu không đồng bộ
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        // Xử lý kết quả từ server (nếu cần)
-        alert(xhr.responseText);
-      }
-    };
-    xhr.open("POST", "model/gio_hang.php", true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
-    // Gửi dữ liệu JSON lên server
-    xhr.send(JSON.stringify({ gio_hang: dataToSave }));
-  }
-});

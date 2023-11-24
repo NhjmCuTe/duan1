@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   // Lấy tất cả các phần tử có class 'anh' (bảng màu)
   var mauElements = document.querySelectorAll(".bst-thu-dong .anh");
 

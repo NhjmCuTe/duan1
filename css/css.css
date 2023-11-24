@@ -272,6 +272,7 @@ main .prev {
   overflow: hidden;
   border-radius: 5px;
   border: 1px solid var(--color_vien);
+  cursor: pointer;
 }
 .thong_tin_sp .bang_mau .chon_mau {
   border: 1px solid var(--color);
@@ -1072,9 +1073,12 @@ header .tiep_tuc_mua a:hover {
   overflow: hidden;
   border-radius: 50%;
   border: 1px solid var(--color_vien);
+  cursor: pointer;
+
 }
 .bst-thu-dong .bang_mau .chon_mau {
   border: 1px solid var(--color);
+ 
 }
 .bst-thu-dong .bang_mau img {
   width: 100%;
@@ -1082,6 +1086,7 @@ header .tiep_tuc_mua a:hover {
 }
 .bst-thu-dong .anh:hover {
   border: 1px solid var(--color);
+
 }
 .bst-thu-dong .img{
   width: 100%;

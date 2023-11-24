@@ -1,36 +1,25 @@
 <h1 class="text-center">Toàn bộ kích thước</h1>
-<div class="hien_thi"><button class="btn btn-primary button">Thêm kích thước</button>
-    <form class="pt-9 px-9 form" style="display: none;" action="index.php?act=ds_kichthuoc" method="post">
+<button id="button" class="btn btn-primary">Thêm kích thước</button>
+<form id="form" class="pt-9 px-9 " style="display: none;" action="index.php?act=ds_kichthuoc" method="post">
 
-        <div class="mb-3 row">
-            <input type="hidden" name="id_mau" value="<?= $anh_theo_mau[0]['id_mau'] ?>" placeholder="123">
-
-            <div class="row col-5">
-
-                <div class="form-floating">
-                    <input name="kich_thuoc" type="text" class="form-control" id="floatingInput" placeholder="">
-                    <label for="floatingInput">Tên kích thước</label>
-                </div>
-                
-            </div>
-            <div class="col-7">
-                <button name="them_kich_thuoc" class="btn btn-primary" style="height: 58px;" value="them_kt">Thêm kích thước</button>
+    <div class="mb-3 row">
+        <input type="hidden" name="id_mau" value="<?= $anh_theo_mau[0]['id_mau'] ?>">
+        <div class="row mb-3 col-md-8">
+            <label for="inputEmail3" class="col-sm-3 col-form-label">Thêm kích thước</label>
+            <div class="col-sm-9">
+                <input name="kich_thuoc" class="form-control" type="text" >
             </div>
         </div>
-        
-    </form>
-</div>
-
-<?php if (isset($one_kich_thuoc)) {
-    extract($one_kich_thuoc);
-    include "edit_kich_thuoc.php";
-} ?>
+        <div class="col-md-4">
+            <button name="them_kich_thuoc" class="btn btn-primary" value="them_kt">Thêm kích thước</button>
+        </div>
+    </div>
+</form>
 <table class="table bang table-hover">
     <thead>
         <tr>
             <th scope="col">ID kích thước</th>
             <th scope="col">Tên kích thước</th>
-            <th scope="col"></th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -42,7 +31,7 @@
 
                 <!-- <td><a href="index.php?act=chi_tiet_sp&id_sp=<?= $id_sanpham ?>" >Chi tiết</a></td> -->
                 <td><a href="index.php?act=ds_kichthuoc&id_kichthuoc_xoa=<?= $id_kichthuoc ?>" onclick="return confirm('bạn có chắc là muốn xóa')">Xóa</a></td>
-                <td><a href="index.php?act=ds_kichthuoc&id_kt_edit=<?= $id_kichthuoc ?>">Sửa</a></td>
+                <td><a href="index.php?act=edit_san_pham&id_sp=<?= $id_kichthuoc ?>">Sửa</a></td>
             </tr>
         <?php endforeach ?>
     </tbody>
