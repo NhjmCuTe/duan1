@@ -10,12 +10,7 @@ require_once "model/san_pham.php";
 
 $all_danhmuc_menu = danhmuc_menu();
 
-
-// include "view/header.php";
-
 include "view/menu.php";
-
-
 
 if (isset($_GET['act']) && $_GET['act']) {
 
@@ -31,6 +26,7 @@ if (isset($_GET['act']) && $_GET['act']) {
          }
 
          break;
+
       case 'dangnhap':
          if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
             $user = $_POST['username'];
@@ -70,6 +66,7 @@ if (isset($_GET['act']) && $_GET['act']) {
          unset($_SESSION['user']);
          header('Location:index.php');
          break;
+         
       default:
          include "view/banner.php";
          $san_pham_home = sanpham_home();

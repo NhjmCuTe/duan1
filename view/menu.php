@@ -72,9 +72,20 @@
                         <p>10</p>
                     </div>
 
-                    <div class="col hover">
-                        <a href=""><i class="fa-regular fa-user"></i><span>Tài khoản</span></a>
-                    </div>
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                    ?>
+                        <div class="col hover">
+                            <a href=""><i class="fa-regular fa-user"></i><span>Tài khoản</span></a>
+                        </div>
+                        <div class="col hover">
+                            <a href="index.php?act=dangxuat"><i class="fa-regular fa-exit"></i><span>Đăng xuất</span></a>
+                        </div>
+                    <?php } else { ?>
+                        <div class="col hover">
+                            <a href="index.php?act=dangnhap"><i class="fa-regular fa-user"></i><span>Đăng nhập</span></a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

@@ -100,11 +100,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                            <a class="sidebar-link" href="http://localhost/abc/index.php?act=dangxuat" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user-plus"></i>
                                 </span>
-                                <span class="hide-menu">Register</span>
+                                <span class="hide-menu">Đăng xuất</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
