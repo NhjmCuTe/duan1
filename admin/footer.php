@@ -7,16 +7,7 @@
     <script src="admin/src/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="admin/src/assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="admin/src/assets/js/dashboard.js"></script>
-    <script>
-        const button = document.getElementById("button");
-        // console.log(button);
-        const form = document.getElementById("form");
-        // console.log(form);
-        button.addEventListener("click", () => {
-            form.style.display = "block";
-            button.style.display = "none";
-        });
-    </script>
+    <script src="admin/show.js"></script>
     </body>
 
     </html>

@@ -8,6 +8,8 @@ include "../model/san_pham.php";
 include "../model/danh_muc.php";
 include "../model/kich_thuoc.php";
 include "../model/tai_khoan.php";
+include "../model/don_hang.php";
+
 
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -119,7 +121,30 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $ds_danhmuc = danh_muc();
             include "danhmuc/ds_danhmuc.php";
             break;
-
+        case 'ds_danhmuc_con':
+            $danh_muc_hien_tai = '';
+            if (isset($_POST['them_dm_con']) && $_POST['them_dm_con']) {
+                $ten_dm_con = $_POST['danh_muc_con'];
+                $id_danhmuc = $_POST['id_danhmuc'];
+                insert_danhmuccon($ten_dm_con, $id_danhmuc);
+            }
+            if (isset($_GET['id_dm_con_xoa']) && $_GET['id_dm_con_xoa']) {
+                delete_danhmuccon($_GET['id_dm_con_xoa']);
+            }
+            if (isset($_GET['id_dm_con_sua']) && $_GET['id_dm_con_sua']) {
+                $one_danhmuc_con =  loadOne_danhmuccon($_GET['id_dm_con_sua']);
+            }
+            if (isset($_POST['edit_danhmuc_con']) && $_POST['edit_danhmuc_con']) {
+                $id_dm_con = $_POST['id_danhmuc_con'];
+                $ten_dm_con = $_POST['ten_dm_con'];
+                update_danhmuccon($id_dm_con, $ten_dm_con);
+            }
+            if (isset($_GET['id_danhmuc']) && $_GET['id_danhmuc']) {
+                $danh_muc_hien_tai = $_GET['id_danhmuc'];
+                $ds_danh_muc_con = loadAll_danhmuccon($_GET['id_danhmuc']);
+            }
+            include "danhmuc/ds_danhmuc_con.php";
+            break;
         case 'ds_taikhoan':
             if (isset($_POST['them_tk']) && $_POST['them_tk']) {
                 $user = $_POST['username'];
@@ -135,32 +160,12 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $ds_taikhoan = all_taikhoan();
             include "taikhoan/ds_taikhoan.php";
             break;
+        case 'ds_donhang':
+                $ds_donhang = ds_donhang();
 
-        case 'ds_danhmuc_con':
-            $danh_muc_hien_tai = '';
-            if (isset($_POST['them_dm_con']) && $_POST['them_dm_con']) {
-                $ten_dm_con = $_POST['danh_muc_con'];
-                $id_danhmuc = $_POST['id_danhmuc'];
-                insert_danhmuccon($ten_dm_con, $id_danhmuc);
-            }
-            if(isset($_GET['id_dm_con_xoa'])&&$_GET['id_dm_con_xoa']){
-                delete_danhmuccon($_GET['id_dm_con_xoa']);
-            }
-            if(isset($_GET['id_dm_con_sua'])&&$_GET['id_dm_con_sua']){
-                $one_danhmuc_con =  loadOne_danhmuccon($_GET['id_dm_con_sua']);
-            }
-            if(isset($_POST['edit_danhmuc_con'])&&$_POST['edit_danhmuc_con']){
-                $id_dm_con = $_POST['id_danhmuc_con'];
-                $ten_dm_con = $_POST['ten_dm_con'];
-                update_danhmuccon($id_dm_con,$ten_dm_con);
-            }
-            if (isset($_GET['id_danhmuc']) && $_GET['id_danhmuc']) {
-                $danh_muc_hien_tai = $_GET['id_danhmuc'];
-                $ds_danh_muc_con = loadAll_danhmuccon($_GET['id_danhmuc']);
-            }
-            include "danhmuc/ds_danhmuc_con.php";
+                include "don_hang/ds_donhang.php";
+            
             break;
-
         default:
             include "main.php";
             break;

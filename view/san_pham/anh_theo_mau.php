@@ -1,7 +1,7 @@
 <?php
-include "../model/pdo.php";
-include "../model/san_pham.php";
-include "../global.php";
+include "../../model/pdo.php";
+include "../../model/san_pham.php";
+include "../../global.php";
 $anh = anh_theo_mau($_GET['id_mau']);
 
 header('Content-Type: application/json');

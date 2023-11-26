@@ -80,11 +80,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=ds_donhang" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-typography"></i>
                                 </span>
-                                <span class="hide-menu">Typography</span>
+                                <span class="hide-menu">Đơn hàng</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
@@ -148,7 +148,7 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header">
+            <!-- <header class="app-header">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item d-block d-xl-none">
@@ -191,5 +191,5 @@
                         </ul>
                     </div>
                 </nav>
-            </header>
+            </header> -->
             <!--  Header End -->

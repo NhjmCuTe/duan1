@@ -64,7 +64,7 @@ productDivs.forEach(function (div) {
   var id_mau = img.dataset.id_mau;
 
   img.addEventListener("click", function () {
-    fetch("view/get_image_info.php?id_mau=" + id_mau)
+    fetch("view/san_pham/anh_theo_mau.php?id_mau=" + id_mau)
       .then((response) => response.json())
       .then((data) => {
         // Lấy đối tượng carousel Slick bằng ID

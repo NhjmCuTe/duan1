@@ -7,31 +7,76 @@ require_once "global.php";
 require_once "model/tai_khoan.php";
 require_once "model/danh_muc.php";
 require_once "model/san_pham.php";
+require_once "model/don_hang.php";
 
 $all_danhmuc_menu = danhmuc_menu();
 
-
-// include "view/header.php";
-
-include "view/menu.php";
-
-
-
+include "view/header.php";
+// unset($_SESSION['user']);
+if (!isset($_GET['an'])) {
+   include "view/menu.php";
+}
 if (isset($_GET['act']) && $_GET['act']) {
 
    $act = $_GET['act'];
    switch ($act) {
       case 'chitiet_sp':
+
          if (isset($_GET['id_mau']) && $_GET['id_mau']) {
             $mang_anh = anh_theo_mau($_GET['id_mau']);
          }
          if (isset($_GET['id_sp']) && $_GET['id_sp']) {
             $chitiet_sp = chitiet_sp($_GET['id_sp']);
-            include "view/chitiet_sp.php";
+            include "view/san_pham/chitiet_sp.php";
          }
 
          break;
+      case 'thanh_toan_1':
+         if (isset($_SESSION['gio_hang']) && $_SESSION['gio_hang']) {
+            include "view/san_pham/dat_hang.php";
+         }
+         else{
+            header('location: index.php');
+         }
+         break;
+      case 'thanh_toan_2':
+         var_dump($_GET);
+         $json_data = file_get_contents('php://input');
+         echo $json_data;
+         $data = json_decode($json_data, true);
+         header('location: index.php');
+         if (isset($_POST['thanh_toan'])) {
+            $ten = $_POST['ho_ten'];
+            $sdt = $_POST['sdt'];
+            $tinh = $_POST['tinh'];
+            $quan = $_POST['quan'];
+            $xa = $_POST['xa'];
+            $chi_tiet = $_POST['chi_tiet'];
+            header('location: index.php');
+         }
+         break;
+      case 'dat_hang':
+         if (isset($_POST['thanh_toan']) && $_POST['thanh_toan']) {
+            $ten = $_POST['ho_ten'];
+            $sdt = $_POST['sdt'];
+            $tinh = $_POST['tinh'];
+            $quan = $_POST['quan'];
+            $xa = $_POST['xa'];
+            $chi_tiet = $_POST['chi_tiet'] . ', ' . $_POST['xa'] . ', ' . $_POST['quan'] . ', ' . $_POST['tinh'];
+            $cach_thanh_toan = $_POST['cach_thanh_toan'];
+            $ghi_chu = $_POST['ghi_chu'];
+            $tong_sl = 0;
+            $tong_tien = 0;
+            foreach ($_SESSION['gio_hang'] as $sp) {
+               $tong_sl += $sp['sl'];
+               $tong_tien += $sp['gia'] * $sp['sl'];
+            }
+            $id_giohang = them_don_hang($tong_sl, $tong_tien, $ten, $chi_tiet, $sdt, $cach_thanh_toan, $ghi_chu);
+            include "view/san_pham/thong_bao.php";
+         }
+         break;
       case 'dangnhap':
+
          if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
             $user = $_POST['username'];
             $pass = $_POST['password'];
@@ -41,12 +86,14 @@ if (isset($_GET['act']) && $_GET['act']) {
                extract($checkuser);
 
                $_SESSION['user'] = $checkuser;
-               if ($role == 1) {
-                  header('location: admin/index.php');
-               } else {
-                  header('location: index.php');
-               }
-            } else {
+               header('location: index.php');
+
+            //    if ($role == 1) {
+            //       header('location: admin/index.php');
+            //    } else {
+            //       header('location: index.php');
+            //    }
+            // } else {
                $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
             }
          }
@@ -57,14 +104,16 @@ if (isset($_GET['act']) && $_GET['act']) {
          if (isset($_POST['dangky']) && ($_POST['dangky'])) {
             $user = $_POST['username'];
             $pass = $_POST['password'];
-            $email = $_POST['email'];
+            // $email = $_POST['email'];
             $sdt = $_POST['sdt'];
-            $address = $_POST['address'];
-            insert_taikhoan($user, $pass, $email, $sdt, $address);
+            // $address = $_POST['address'];
+            insert_taikhoan($user, $pass,'', $sdt, '');
             $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
+            echo "<script>alert('cập nhật thành công')</script>";
+            header('location: index.php');
          }
-         include "view/dangky.php";
-         break;
+            include "view/tai_khoan/dangky.php";
+
 
       case 'dangxuat':
          unset($_SESSION['user']);
@@ -82,5 +131,6 @@ if (isset($_GET['act']) && $_GET['act']) {
    $san_pham_home = sanpham_home();
    include "view/main.php";
 }
-
-include "view/footer.php";
+if (!isset($_GET['an'])) {
+   include "view/footer.php";
+}

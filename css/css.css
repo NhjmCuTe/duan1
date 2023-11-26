@@ -375,6 +375,7 @@ main .prev {
   border-left: none;
   border-right: none;
   background: #fff;
+  /* pointer-events: none; */
 }
 .so_luong button {
   background-color: white;
@@ -504,7 +505,7 @@ main .banner2 .content {
   display: block !important;
   visibility: hidden;
   transform: translateX(50%);
-  transition: all 0.8s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 #modal_gio_hang .modal-dialog {
   margin-right: 0;
@@ -590,22 +591,26 @@ main .banner2 .content {
   text-overflow: ellipsis;
   font-weight: 500;
 }
-.modal_gio_hang .san_pham .mau {
+.modal_gio_hang .san_pham .mau,
+.san_pham_thanh_toan .mau {
   width: 30px;
   height: 30px;
   overflow: hidden;
   border-radius: 50%;
 }
-.modal_gio_hang .san_pham .mau img {
+.modal_gio_hang .san_pham .mau img,
+.san_pham_thanh_toan .mau img {
   transform: scale(1.5);
   width: 100%;
 }
-.modal_gio_hang .san_pham .thong_tin {
+.modal_gio_hang .san_pham .thong_tin,
+.san_pham_thanh_toan .thong_tin {
   display: flex;
   align-items: center;
   color: var(--color_logo);
 }
-.modal_gio_hang .san_pham .thong_tin span {
+.modal_gio_hang .san_pham .thong_tin span,
+.san_pham_thanh_toan .thong_tin span {
   margin: 0 10px;
   font-weight: 700;
 }
@@ -664,7 +669,7 @@ header .tiep_tuc_mua a:hover {
   background: #dfdfdfc7;
   border-radius: 50%;
   width: 30px;
-  margin-right:10px;
+  margin-right: 10px;
 }
 .buoc .buoc_hien_tai {
   color: #50b3c0;
@@ -672,7 +677,8 @@ header .tiep_tuc_mua a:hover {
 .buoc .buoc_hien_tai .so {
   background-color: rgba(47, 169, 185, 0.1);
 }
-.buoc .buoc_hien_tai::after,.buoc .buoc_hien_tai::before {
+.buoc .buoc_hien_tai::after,
+.buoc .buoc_hien_tai::before {
   content: "";
   width: 60px;
   height: 2px;
@@ -681,7 +687,7 @@ header .tiep_tuc_mua a:hover {
   margin: 0 12px;
   margin-bottom: 5px;
 }
-.buoc .buoc_3{
+.buoc .buoc_3 {
   opacity: 50%;
 }
 
@@ -1074,11 +1080,9 @@ header .tiep_tuc_mua a:hover {
   border-radius: 50%;
   border: 1px solid var(--color_vien);
   cursor: pointer;
-
 }
 .bst-thu-dong .bang_mau .chon_mau {
   border: 1px solid var(--color);
- 
 }
 .bst-thu-dong .bang_mau img {
   width: 100%;
@@ -1086,14 +1090,200 @@ header .tiep_tuc_mua a:hover {
 }
 .bst-thu-dong .anh:hover {
   border: 1px solid var(--color);
-
 }
-.bst-thu-dong .img{
+.bst-thu-dong .img {
   width: 100%;
   height: 400px;
   overflow: hidden;
 }
-.bst-thu-dong .img img{
-height: 100%;
- object-fit: cover;
+.bst-thu-dong .img img {
+  height: 100%;
+  object-fit: cover;
+}
+.modal-content {
+  height: 100%;
+}
+.gio_hang_rong {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+.san_pham_thanh_toan img {
+  width: 100%;
+}
+
+.thong_tin_giao_hang .ten_dau {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 10px;
+}
+.thong_tin_giao_hang .ten_dau i {
+  font-size: 30px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+.thong_tin_giao_hang .ten_dau h1 {
+  font-size: 30px;
+}
+.thong_tin_giao_hang .khung {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 40px;
+  border: 1px solid var(--color_vien);
+  border-radius: 5px;
+}
+
+.thong_tin_giao_hang .thanh_toan label {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.thong_tin_giao_hang .thanh_toan label input,
+.thong_tin_giao_hang .thanh_toan label img {
+  margin-right: 10px;
+}
+
+.thong_tin_giao_hang .thanh_toan label:hover {
+  border: 1px solid #919395;
+}
+.san_pham_thanh_toan .box {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color_vien);
+}
+.thong_tin_giao_hang .sl {
+  font-weight: 700;
+}
+.thong_tin_giao_hang .tong_tien {
+  justify-content: space-between;
+}
+.thong_tin_giao_hang .tong_tien .gia {
+  font-weight: 700;
+  font-size: 20px;
+}
+.thong_bao_dat_hang .thong_tin {
+  width: 600px;
+  background-color: white;
+  border: 1px solid var(--color_vien);
+  border-radius: 5px;
+  padding: 20px;
+}
+.thong_bao_dat_hang .thong_tin h2 {
+  border-bottom: 1px solid var(--color_vien);
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.thong_bao_dat_hang .thong_tin .chi_tiet {
+  padding: 10px 0;
+}
+.thong_bao_dat_hang .thong_tin .dam {
+  font-weight: 600;
+}
+
+.thong_bao_dat_hang .thong_tin .chi_tiet div,
+.thong_bao_dat_hang .thong_tin .chi_tiet span {
+  margin-bottom: 15px;
+}
+.thong_bao_dat_hang .thong_tin .tiep_tuc {
+  color: var(--color);
+  font-weight: 700;
+}
+.thong_bao_dat_hang .thong_tin a:hover {
+  color: var(--color_logo);
+}
+.thong_bao_dat_hang .thong_tin .a {
+  color: #0d71bc;
+}
+header .dang_nhap{
+  cursor: pointer;
+  position: relative;
+}
+#modal_dang_nhap .modal-header,#modal_dang_ky .modal-header{
+  border: none;
+}
+#modal_dang_nhap .modal-header{
+  padding-bottom: 0;
+}
+#modal_dang_nhap .modal-footer, #modal_dang_ky .modal-footer{
+  border: none;
+  padding-top: 0;
+}
+#modal_dang_nhap .modal-content input{
+  margin-top: 15px;
+}
+#modal_dang_nhap button, #modal_dang_ky button{
+  margin-top: 0;
+}
+#modal_dang_ky .modal-body{
+  padding-bottom: 0;
+  padding-top: 0;
+}
+#modal_dang_nhap .modal-body{
+  padding-top: 0;
+}
+#modal_dang_ky .modal-body h1{
+  margin-bottom: 20px;
+}
+.dang_ky{
+  color: var(--color_logo);
+  font-weight: 600;
+  margin: 15px 0; 
+  cursor: pointer;
+}
+
+header .menu_chinh:hover .menu_con {
+  display: block;
+}
+header .dang_nhap:hover .thong_tin_dang_nhap{
+  opacity: 1;
+  visibility: visible;
+}
+header .thong_tin_dang_nhap:hover{
+  opacity: 1;
+  visibility: visible;
+}
+header .thong_tin_dang_nhap{
+  position: absolute;
+  bottom: -120px;
+  right: -30px;
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid var(--color_vien);
+  opacity: 0;
+  padding: 5px;
+  visibility: hidden;
+  z-index: 2;
+  transition: all 0.3s ease-in-out;
+}
+header .thong_tin_dang_nhap a:hover{
+  color: var(--color_logo);
+  font-weight: 600;
+}
+header .thong_tin_dang_nhap a{
+  font-weight: 600;
+}
+header .thong_tin_dang_nhap span{
+  font-weight: 600;
+  font-size: 20px;
+}
+header .dang_nhap:hover::after {
+  content: "";
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  /* background: rgba(255, 0, 0, 0.305); */
+  z-index: 1;
 }
