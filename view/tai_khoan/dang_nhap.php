@@ -21,6 +21,7 @@
                         <input name="password" type="text" class="form-control" id="floatingInput" placeholder="">
                         <label for="floatingInput">Mật khẩu</label>
                     </div>
+                    <input type="hidden" name="duong_dan_hien_tai" value="" class="duong_dan">
             </div>
             <div class="modal-footer">
                 <div class="mua" style="width: 100%;">

@@ -149,4 +149,28 @@ bang_mau.forEach((mau) => {
 });
 }
 
+var so_luong_chinh = document.querySelector(".so_luong_chinh input");
+var giam_sl = document.querySelector(".so_luong_chinh .bt1");
+var tang_sl = document.querySelector(".so_luong_chinh .bt2");
+
+tang_sl.addEventListener("click", () => {
+  var so = parseInt(so_luong_chinh.value);
+
+  console.log(so_luong_chinh.value);
+  so_luong_chinh.value = so + 1;
+
+  // tang_giam_sl();
+  // tinhTongTienTrongGioHang();
+  // hientien();
+});
+giam_sl.addEventListener("click", () => {
+  var so = parseInt(so_luong_chinh.value);
+  if (so > 1) {
+    so_luong_chinh.value = so - 1;
+
+    // tinhTongTienTrongGioHang();
+    // hientien();
+  }
+});
+
 

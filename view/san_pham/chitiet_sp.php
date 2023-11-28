@@ -29,7 +29,7 @@ extract($chitiet_sp) ?>
                 <div class="ma_sp">
                     Mã sp: <span class="mau_chung"><?= $id_sanpham ?></span>
                 </div>
-                <div class="gia price" data-gia="<?= $gia ?>"></div>
+                <div class="gia price" data-gia="<?= $gia ?>"><?= number_format($gia,0,'','.')?> đ</div>
                 <div class="mau">Màu sắc: <span class="mau_chung"></span></div>
                 <div class="bang_mau">
                     <?php $mang_img_mau = explode(',', $img_mau);
@@ -78,7 +78,7 @@ extract($chitiet_sp) ?>
                 </div>
 
 
-                <div class="so_luong">
+                <div class="so_luong_chinh">
                     <span>Số lượng: </span><button class="bt1"><i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" disabled /><button class="bt2"><i class="fa-solid fa-plus"></i></button>
                 </div>
 

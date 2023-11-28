@@ -21,7 +21,6 @@ if (isset($_GET['act']) && $_GET['act']) {
    $act = $_GET['act'];
    switch ($act) {
       case 'chitiet_sp':
-
          if (isset($_GET['id_mau']) && $_GET['id_mau']) {
             $mang_anh = anh_theo_mau($_GET['id_mau']);
          }
@@ -34,8 +33,7 @@ if (isset($_GET['act']) && $_GET['act']) {
       case 'thanh_toan_1':
          if (isset($_SESSION['gio_hang']) && $_SESSION['gio_hang']) {
             include "view/san_pham/dat_hang.php";
-         }
-         else{
+         } else {
             header('location: index.php');
          }
          break;
@@ -67,11 +65,12 @@ if (isset($_GET['act']) && $_GET['act']) {
             $ghi_chu = $_POST['ghi_chu'];
             $tong_sl = 0;
             $tong_tien = 0;
+            $id_tk = $_SESSION['user']['id_taikhoan'];
             foreach ($_SESSION['gio_hang'] as $sp) {
                $tong_sl += $sp['sl'];
                $tong_tien += $sp['gia'] * $sp['sl'];
             }
-            $id_giohang = them_don_hang($tong_sl, $tong_tien, $ten, $chi_tiet, $sdt, $cach_thanh_toan, $ghi_chu);
+            $id_giohang = them_don_hang($tong_sl, $tong_tien, $ten, $chi_tiet, $sdt, $cach_thanh_toan, $ghi_chu, $id_tk);
             include "view/san_pham/thong_bao.php";
          }
          break;
@@ -80,24 +79,18 @@ if (isset($_GET['act']) && $_GET['act']) {
          if (isset($_POST['dangnhap']) && ($_POST['dangnhap'])) {
             $user = $_POST['username'];
             $pass = $_POST['password'];
+            $duong_dan = 'location:' . $_POST['duong_dan_hien_tai'];
             $checkuser = checkuser($user, $pass);
             // var_dump($checkuser);die;
             if (is_array($checkuser)) {
                extract($checkuser);
-
                $_SESSION['user'] = $checkuser;
-               header('location: index.php');
-
-            //    if ($role == 1) {
-            //       header('location: admin/index.php');
-            //    } else {
-            //       header('location: index.php');
-            //    }
-            // } else {
+               header($duong_dan);
+            } else {
                $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
             }
          }
-         include "view/dangnhap.php";
+
          break;
 
       case 'dangky':
@@ -107,17 +100,25 @@ if (isset($_GET['act']) && $_GET['act']) {
             // $email = $_POST['email'];
             $sdt = $_POST['sdt'];
             // $address = $_POST['address'];
-            insert_taikhoan($user, $pass,'', $sdt, '');
+            insert_taikhoan($user, $pass, '', $sdt, '');
             $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
             echo "<script>alert('cập nhật thành công')</script>";
-            header('location: index.php');
+            $duong_dan = 'location:' . $_POST['duong_dan_hien_tai'];
+            // echo $duong_dan;die;
+            header($duong_dan);
          }
-            include "view/tai_khoan/dangky.php";
 
+         break;
 
       case 'dangxuat':
          unset($_SESSION['user']);
          header('Location:index.php');
+         break;
+      case 'theo_doi_dh':
+         if (isset($_SESSION['user']) && $_SESSION['user']) {
+            $don_hang = don_hang_user($_SESSION['user']['id_taikhoan']);
+            include "view/tai_khoan/don_hang.php";
+         }
          break;
       default:
          include "view/banner.php";

@@ -46,9 +46,11 @@ if (isset($_SESSION['gio_hang']) && $_SESSION['gio_hang']) {
     //         <a href=""><button>Thanh toán</button></a>
     //     </div>
     // </div>';
-} else {
-    echo '  <div class="gio_hang_rong">
-                <img src="' . $duong_dan_anh . 'cart-empty.png" alt=""> 
-                <h5>Giỏ hàng trống</h5>
-            </div>';
-}
+} 
+
+// else {
+//     echo '  <div class="gio_hang_rong">
+//                 <img src="' . $duong_dan_anh . 'cart-empty.png" alt=""> 
+//                 <h5>Giỏ hàng trống</h5>
+//             </div>';
+// }

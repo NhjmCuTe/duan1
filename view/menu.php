@@ -40,19 +40,21 @@
 
                 <div id="gio_hang" data-bs-toggle="modal" data-bs-target="#modal_gio_hang" class="col gio_hang hover">
                     <i class="fa-regular fa-cart-shopping"></i><span>Giỏ hàng</span>
-                    <!-- <p>10</p> -->
+                    <p id="sl_gio_hang"><?= isset($_SESSION['sl_gio_hang']) ? $_SESSION['sl_gio_hang'] : 0 ?></p>
                 </div>
 
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']) : ?>
                     <div class="col hover dang_nhap">
                         <i class="fa-regular fa-user"></i><span>Tài khoản</span>
-                        <div class="thong_tin_dang_nhap">
-                            Xin chào <span><?= $_SESSION['user']['ten']  ?></span>
-                            <?= isset($_SESSION['user']['role'])==1 ? '<a href="admin">Quản trị</a>':'' ?>
+                    </div>
+                    <div class="thong_tin_dang_nhap">
+                        <div class="name"><a href="">Xin chào: <span><?= $_SESSION['user']['ten']  ?></span></a></div>
+                        <div class="link">
+                            <?= isset($_SESSION['user']['role']) == 1 ? '<a href="admin">Quản trị</a>' : '' ?>
+                            <a href="index.php?act=theo_doi_dh">Theo dõi đơn hàng</a>
                             <a href="index.php?act=dangxuat">Đăng xuất</a>
                         </div>
                     </div>
-
                 <?php else : ?>
                     <div class="col hover dang_nhap" data-bs-toggle="modal" data-bs-target="#modal_dang_nhap">
                         <i class="fa-regular fa-user"></i><span>Tài khoản</span>

@@ -11,7 +11,7 @@
         <img src="img/game-online-1.webp" alt="" />
       </a>
       <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-        CANIFA
+        DMen
       </span>
       <p class="real-time">20:31 24/10/2023</p>
     </div>
@@ -20,7 +20,7 @@
         <img src="img/game-online-2.webp" alt="" />
       </a>
       <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-        CANIFA
+        DMen
       </span>
       <p class="real-time">20:31 24/10/2023</p>
     </div>
@@ -29,7 +29,7 @@
         <img src="img/untitled-2-01_1.png" alt="" />
       </a>
       <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-        CANIFA
+        DMen
       </span>
       <p class="real-time">20:31 24/10/2023</p>
     </div>
@@ -38,7 +38,7 @@
         <img src="img\list_image_tablet1698379402.png" alt="" />
       </a>
       <span>ĐỒ ĐẸP, GIÁ HỜI, SẮM SỬA THẢNH THƠI CÙNG SIÊU HỘI VOUCHER NHÀ
-        CANIFA
+        DMen
       </span>
       <p class="real-time">20:31 24/10/2023</p>
     </div>
@@ -67,7 +67,7 @@
       <div class="footer-content">
         <div class="row">
           <div class="footer-colum1">
-            <h3>CÔNG TY CỔ PHẦN CANIFA</h3>
+            <h3>CÔNG TY CỔ PHẦN DMen</h3>
             <p>
               Số ĐKKD: 0107574310, ngày cấp: 23/09/2016, Nơi cấp: Sở Kế hoạch
               và đầu tư Hà Nội
@@ -82,7 +82,6 @@
             </p>
             <p>Điện thoại: +8424 - 7303.0222</p>
             <p>Fax: +8424 - 6277.6419</p>
-            <p>Email: hello@canifa.com</p>
             <div class="block-social">
               <i class="social fab fa-facebook-square"></i>
               <i class="social fab fa-instagram-square"></i>

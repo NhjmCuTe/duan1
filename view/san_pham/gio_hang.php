@@ -15,12 +15,13 @@
                      <i class="fa-regular fa-truck-fast"></i><span>Miễn phí vận chuyển toàn bộ đơn hàng</span>
                  </div>
                  <div class="san_pham" id="san_pham_gio_hang">
+                     
                  </div>
              </div>
-             <div class="modal-footer">
+             <div class="modal-footer thanh_toan">
                  <div class="tien"><span class="tam_tinh">Tạm tính:</span><span class="gia price" data-gia=0></span></div>
                  <div class="mua">
-                     <a href="index.php?act=thanh_toan_1&an"><button>Thanh toán</button></a>
+                     <button>Thanh toán</button>
                  </div>
              </div>
          </div>
