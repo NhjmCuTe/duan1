@@ -1,4 +1,19 @@
 <?php
+//check email và username khi đăng ký
+function checkEmail($email)
+{
+    $sql = "select * from tai_khoan where email='" . $email . "'";
+    $checkemail = pdo_query_one($sql);
+    return $checkemail;
+}
+
+function checkUsername($user)
+{
+    $sql = "select * from tai_khoan where ten='" . $user . "'";
+    $checkusername = pdo_query_one($sql);
+    return $checkusername;
+}
+
 // thêm tài khoản ki đăng kí
 function insert_taikhoan($user, $pass, $email, $sdt, $address)
 {

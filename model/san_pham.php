@@ -89,16 +89,14 @@ function them_sp($ten, $gia, $mota, $id_dm_con)
 function load_1_sp($id_sanpham)
 {
   $sql = "SELECT
-  san_pham.id_sanpham,
-  san_pham.ten_sanpham,
-  san_pham.mo_ta,
-  san_pham.gia,
-  danh_muc.id_danhmuc,
-  danh_muc_con.id_danhmuc_con
+  san_pham.*,
+  danh_muc.ten_danhmuc,
+  danh_muc_con.ten_danhmuc_con,
+  danh_muc_con.id_danhmuc
 FROM
-  san_pham
+  danh_muc_con
 JOIN
-  danh_muc_con ON danh_muc_con.id_danhmuc_con = san_pham.id_danhmuc_con
+  san_pham ON danh_muc_con.id_danhmuc_con = san_pham.id_danhmuc_con
 JOIN
   danh_muc ON danh_muc.id_danhmuc = danh_muc_con.id_danhmuc
 WHERE

@@ -6,14 +6,21 @@
           <div class="card mb-0">
             <div class="card-body">
               <p class="text-center">Đăng Nhập</p>
+              <?php
+              if (isset(($thongbao)) && ($thongbao != "")) {
+                echo '<div class="alert alert-danger">' .$thongbao. '</div>';
+              }
+              ?>
               <form action="index.php?act=dangnhap" method="post">
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Tài khoản</label>
                   <input type="text" name="username" class="form-control" id="exampleInputEmail1">
+                  <span class="text text-danger" style="display: contents;"><?php echo $userErr ?></span>
                 </div>
                 <div class="mb-4">
                   <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                  <span class="text text-danger" style="display: contents;"><?php echo $passErr ?></span>
                 </div>
                 <input type="submit" name="dangnhap" value="Đăng nhập" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">
                 <div class="d-flex align-items-center justify-content-center">
@@ -21,11 +28,7 @@
                   <a class="text-primary fw-bold ms-2" href="index.php?act=dangky">Tạo tài khoản mới</a>
                 </div>
               </form>
-              <?php
-              if (isset(($thongbao)) && ($thongbao != "")) {
-                echo $thongbao;
-              }
-              ?>
+              
             </div>
           </div>
         </div>
