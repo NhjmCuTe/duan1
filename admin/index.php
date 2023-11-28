@@ -170,10 +170,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'ds_donhang':
             if (isset($_POST['thay_doi'])) {
-                if (isset($_POST['trang_thai']) && $_POST['trang_thai']!='') {
-                    $trang_thai = $_POST['trang_thai'];
-                } else {
+                if (isset($_POST['check']) && $_POST['check']!='') {
                     $trang_thai = $_POST['trang_thai_khac'];
+                } else {
+                    $trang_thai = $_POST['trang_thai'];
                 }
                 $id_donhang = $_POST['id_don_hang'];
                 thay_doi_trang_thai($trang_thai, $id_donhang);
