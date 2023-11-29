@@ -99,7 +99,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="http://localhost/abc/index.php?act=dangxuat" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=dangxuat" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user-plus"></i>
                                 </span>

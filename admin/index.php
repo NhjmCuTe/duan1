@@ -11,6 +11,13 @@ include "../model/tai_khoan.php";
 include "../model/don_hang.php";
 
 
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -58,34 +65,76 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'them_sp':
             $danh_muc = danh_muc();
-            if (isset($_POST['them_san_pham']) && $_POST['them_san_pham']) {
-                $ten = $_POST['ten_sp'];
-                $gia = $_POST['gia'];
-                $mota = $_POST['mo_ta'];
-                $danh_muc_con = $_POST['danh_muc_con'];
+            $tenErr = $giaErr =  "";
+            $ten = $gia = $mota = "";
 
-                them_sp($ten, $gia, $mota, $danh_muc_con);
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (empty($_POST['ten_sp'])) {
+                    $tenErr = "Tên không được để trống!";
+                }
+                if (empty($_POST['gia'])) {
+                    $giaErr = "Giá không được để trống!";
+                } else {
+                    $ten = test_input($_POST['ten_sp']);
+                    $gia = test_input($_POST["gia"]);
+                    $mota = test_input($_POST["mo_ta"]);
+
+                    if (!preg_match("/^[a-zA-Z0-9-' ]*$/", $ten)) {
+                        $tenErr = "Chỉ chữ cái, số và khoảng trắng được cho phép!";
+                    } else if (!preg_match("/^[0-9]*$/", $gia)) {
+                        $giaErr = "Chỉ số được cho phép!";
+                    } else {
+                        $danh_muc_con = $_POST['danh_muc_con'];
+                        them_sp($ten, $gia, $mota, $danh_muc_con);
+                        $thongbao = "Thêm sản phẩm thành công!";
+                    }
+                }
             }
             include "san_pham/them_san_pham.php";
             break;
         case 'edit_san_pham':
             $danh_muc = danh_muc();
+            $tenErr = $giaErr =  "";
+            $ten = $gia = $mota = "";
+
             if (isset($_GET['id_sp']) && $_GET['id_sp'] != '') {
                 $load_1_sp = load_1_sp($_GET['id_sp']);
                 include "san_pham/edit_san_pham.php";
             }
-            if (isset($_POST['edit_san_pham']) && $_POST['edit_san_pham']) {
-                $id_sanpham = $_POST['id_sp'];
-                $ten = $_POST['ten_sp'];
-                $gia = $_POST['gia'];
-                $mota = $_POST['mo_ta'];
-                $danh_muc_con = $_POST['danh_muc_con'];
-                edit_san_pham($id_sanpham, $ten, $gia, $mota, $danh_muc_con);
-                header('location: index.php?act=ds_san_pham');
-                die;
-            }
 
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (empty($_POST['ten_sp'])) {
+                    $tenErr = "Tên không được để trống!";
+                    $load_1_sp = load_1_sp($_POST['id_sp']);
+                    include "san_pham/edit_san_pham.php";
+                }
+                if (empty($_POST['gia'])) {
+                    $giaErr = "Giá không được để trống!";
+                    $load_1_sp = load_1_sp($_POST['id_sp']);
+                    include "san_pham/edit_san_pham.php";
+                } else {
+                    $ten = test_input($_POST['ten_sp']);
+                    $gia = test_input($_POST["gia"]);
+                    $mota = test_input($_POST["mo_ta"]);
+
+                    if (!preg_match("/^[a-zA-Z0-9-' ]*$/", $ten)) {
+                        $tenErr = "Chỉ chữ cái, số và khoảng trắng được cho phép!";
+                        $load_1_sp = load_1_sp($_POST['id_sp']);
+                        include "san_pham/edit_san_pham.php";
+                    } else if (!preg_match("/^[0-9]*$/", $gia)) {
+                        $giaErr = "Chỉ số được cho phép!";
+                        $load_1_sp = load_1_sp($_POST['id_sp']);
+                        include "san_pham/edit_san_pham.php";
+                    } else {
+                        $danh_muc_con = $_POST['danh_muc_con'];
+                        edit_san_pham($id_sanpham, $ten, $gia, $mota, $danh_muc_con);
+                        header('location: index.php?act=ds_san_pham');
+                        die;
+                    }
+                }
+            }
             break;
+
         case 'them_kich_thuoc':
             if (isset($_POST['them_kich_thuoc']) && $_POST['them_kich_thuoc']) {
                 $ten_kich_thuoc = $_POST['ten_kt'];
@@ -189,15 +238,51 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             break;
         case 'them_tk':
-            if (isset($_POST['them_tk']) && ($_POST['them_tk'])) {
-                $user = $_POST['username'];
-                $pass = $_POST['password'];
-                $email = $_POST['email'];
-                $sdt = $_POST['sdt'];
-                $address = $_POST['address'];
-                insert_taikhoan($user, $pass, $email, $sdt, $address);
-                $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
-                header('location: index.php?act=ds_taikhoan');
+            $userErr = $passErr = $emailErr = $sdtErr = $addressErr = "";
+            $user = $pass = $email = $sdt = $address = "";
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (empty($_POST['username'])) {
+                    $userErr = "Tài khoản không được để trống!";
+                }
+                if (empty($_POST['password'])) {
+                    $passErr = "Mật khẩu không được để trống!";
+                }
+                if (empty($_POST['email'])) {
+                    $emailErr = "Email không được để trống!";
+                }
+                if (empty($_POST['sdt'])) {
+                    $sdtErr = "Số điện thoại không được để trống!";
+                }
+                if (empty($_POST['address'])) {
+                    $addressErr = "Địa chỉ không được để trống!";
+                } else {
+                    $user = test_input($_POST['username']);
+                    $pass = test_input($_POST["password"]);
+                    $email = test_input($_POST["email"]);
+                    $sdt = test_input($_POST["sdt"]);
+                    $address = test_input($_POST["address"]);
+
+                    $checkEmail = checkEmail($email);
+                    $checkussername = checkUsername($user);
+
+                    if (!preg_match("/^[a-zA-Z0-9]*$/", $user)) {
+                        $userErr = "Chỉ chữ cái và số được cho phép!";
+                    } else if (!preg_match("/^[a-zA-Z0-9]*$/", $pass)) {
+                        $passErr = "Chỉ chữ cái và số được cho phép!";
+                    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $emailErr = "Định dạng email sai!";
+                    } else if (!preg_match("/^[0-9]*$/", $sdt)) {
+                        $sdtErr = "Chỉ số được cho phép!";
+                    } else if (is_array($checkEmail)) {
+                        $emailErr = "Email đã được sử dụng, vui lòng nhập email khác!";
+                    } else if (is_array($checkussername)) {
+                        $userErr = "Tên tài khoản đã được sử dụng, vui lòng nhập tên tài khoản khác!";
+                    } else {
+                        insert_taikhoan($user, $pass, $email, $sdt, $address);
+                        $thongbao = "Đã thêm tài khoản thành công";
+                    }
+                }
             }
             include "taikhoan/them_tk.php";
             break;
