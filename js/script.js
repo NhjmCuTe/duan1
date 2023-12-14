@@ -243,13 +243,14 @@ document.querySelector(".thanh_toan .mua button").addEventListener("click", func
     .then(function (data) {
       if (data === "ton_tai") {
         // Session tồn tại, chuyển hướng đến trang khác
-        window.location.href = "index.php?act=thanh_toan_1&an";
+       location.href = "index.php?act=thanh_toan_1&an";
       } else {
         // Session không tồn tại, hiển thị thông báo
         // alert("Vui lòng đăng nhập để thanh toán");
 
         $('#modal_dang_nhap').modal('show'); // Hiển thị modal
-        console.log(document.getElementById('modal_dang_nhap'));
+        $('#modal_gio_hang').modal('hide'); // Hiển thị modal
+        // console.log(document.getElementById('modal_dang_nhap'));
       }
     })
     .catch(function (error) {
@@ -257,3 +258,6 @@ document.querySelector(".thanh_toan .mua button").addEventListener("click", func
     });
 });
 document.getElementById('modal_dang_ky').modal('show'); // Hiển thị modal
+
+
+

@@ -1,4 +1,4 @@
-<form id="form" class=" pt-9 px-9 " action="index.php?act=ds_kichthuoc" method="post">
+<form id="form" class=" pt-9 px-9 needs-validation" novalidate action="index.php?act=ds_kichthuoc" method="post">
 
     <div class="mb-3 row ">
 
@@ -13,9 +13,11 @@
             </div>
             <div class="col-sm-4">
                 <div class="form-floating">
-                    <input name="ten_kt" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= isset($ten_kichthuoc) ? $ten_kichthuoc : '' ?>">
+                    <input name="ten_kt" required type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= isset($ten_kichthuoc) ? $ten_kichthuoc : '' ?>">
                     <label for="floatingInputDisabled">Tên kích thước</label>
-
+                    <div class="invalid-feedback">
+                        Vui lòng nhập tên kích thước
+                    </div>
                 </div>
             </div>
         </div>

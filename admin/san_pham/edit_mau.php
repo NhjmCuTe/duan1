@@ -1,4 +1,4 @@
-<form id="form" class=" pt-9 px-9 " action="index.php?act=chi_tiet_sp&id_sp=<?= $id_sp_dang_xem?>" method="post" enctype="multipart/form-data">
+<form id="form" class=" pt-9 px-9 needs-validation" novalidate action="index.php?act=chi_tiet_sp&id_sp=<?= $id_sp_dang_xem ?>" method="post" enctype="multipart/form-data">
 
     <div class="mb-3 row ">
 
@@ -21,9 +21,11 @@
         </div>
         <div class="col-2">
             <div class="form-floating">
-                <input name="ten_mau" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= $load_1_mau['ten_mau'] ?>">
+                <input name="ten_mau" required type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= $load_1_mau['ten_mau'] ?>">
                 <label for="floatingInputDisabled">Tên màu</label>
-
+                <div class="invalid-feedback">
+                    Vui lòng nhập tên màu sắc
+                </div>
             </div>
         </div>
 

@@ -12,18 +12,25 @@
                 <h2> Xin chào,</h2>
                 Đăng nhập tài khoản Dmen
 
-                <form action="index.php?act=dangnhap" method="post">
+                <form class="needs-validation form_dang_nhap" novalidate>
                     <div class="form-floating mb-3">
-                        <input name="username" type="text" class="form-control" id="floatingInput" placeholder="">
+                        <input name="username" required type="text" class="form-control dn_username" id="floatingInput" placeholder="">
                         <label for="floatingInput">Tên tài khoản</label>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập tên tài khoản
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <input name="password" type="text" class="form-control" id="floatingInput" placeholder="">
+                        <input name="password" required type="text" class="form-control dn_password" id="floatingInput" placeholder="">
                         <label for="floatingInput">Mật khẩu</label>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập mật khẩu
+                        </div>
                     </div>
                     <input type="hidden" name="duong_dan_hien_tai" value="" class="duong_dan">
             </div>
             <div class="modal-footer">
+                <p class="text-danger text-center thong_bao_dn" style="width: 100%;"></p>
                 <div class="mua" style="width: 100%;">
                     <button id="mua" name="dangnhap" value="dn">Đăng nhập</button>
                     </form>
@@ -34,3 +41,50 @@
         </div>
     </div>
 </div>
+<script>
+    document.querySelector('.form_dang_nhap').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Lấy giá trị từ form
+        const username = document.querySelector('.dn_username').value;
+        const password = document.querySelector('.dn_password').value;
+
+        if (username.trim() === '' || password.trim() === '') {
+            return;
+        }
+        // Gửi yêu cầu đăng nhập
+        login(username, password);
+    });
+
+    function login(username, password) {
+        const loginUrl = './model/dang_nhap.php';
+
+        // Tạo đối tượng Request
+        const loginRequest = new Request(loginUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+        });
+
+        // Gửi yêu cầu đăng nhập
+        fetch(loginRequest)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                    // console.log('Đăng nhập thành công:', data.message);
+                    // Xử lý sau khi đăng nhập thành công
+                } else {
+                    document.querySelector('.thong_bao_dn').innerHTML = `${data.message}`;
+                    // console.error('Đăng nhập thất bại:', data.message);
+                    // Hiển thị thông báo lỗi cho người dùng
+                    // alert('Đăng nhập thất bại: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Đăng nhập thất bại hoặc có lỗi khác:', error);
+            });
+    }
+</script>

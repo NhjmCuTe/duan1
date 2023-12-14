@@ -1,14 +1,19 @@
 <h1 class="text-center">Ảnh sản phẩm</h1>
-
+<div class="quay_lai" style="font-size: 20px; margin-bottom: 20px; ">
+<a href="index.php?act=chi_tiet_sp&id_sp=<?= $id_sp ?>" ><span><i class="fa-regular fa-left" style="margin-right: 10px;"></i>Quay lại</span></a>
+</div>
 <div class="hien_thi"><button class="btn btn-primary button">Thêm ảnh</button>
-    <form class="pt-9 px-9 form" style="display: none;" action="index.php?act=anh_theo_mau&id_mau=<?= $id_mau_dang_xem ?>&them_anh" method="post" enctype="multipart/form-data">
+    <form class="pt-9 px-9 form needs-validation" novalidate style="display: none;" action="index.php?act=anh_theo_mau&id_mau=<?= $id_mau_dang_xem ?>&them_anh&id_sp=<?= $id_sp ?>" method="post" enctype="multipart/form-data">
 
         <div class="mb-3 row">
             <input type="hidden" name="id_mau" value="<?= $id_mau_dang_xem ?>">
             <div class="row mb-3 col-md-6">
                 <label for="inputEmail3" class="col-sm-3 col-form-label">Thêm ảnh</label>
                 <div class="col-sm-9">
-                    <input name="img" class="form-control" type="file" id="formFileMultiple" multiple >
+                    <input name="img" required class="form-control" type="file" id="formFileMultiple" multiple >
+                    <div class="invalid-feedback">
+                        Vui lòng thêm ảnh
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -36,7 +41,7 @@
                 <th scope="row"><img src="../<?= $duong_dan_anh . $img_anh ?>" alt="" width="80px"></th>
 
 
-                <td><a href="index.php?act=anh_theo_mau&id_mau=<?= $id_mau_dang_xem ?>&id_anh_xoa=<?= $id_anh ?>" onclick="return confirm('bạn có chắc là muốn xóa')">Xóa</a></td>
+                <td><a href="index.php?act=anh_theo_mau&id_mau=<?= $id_mau_dang_xem ?>&id_anh_xoa=<?= $id_anh ?>&id_sp=<?= $id_sp ?>" onclick="return confirm('bạn có chắc là muốn xóa')">Xóa</a></td>
                 <!-- <td><a href="index.php?act=ds_san_pham&id_sp=<?= $id_sanpham ?>">Sửa</a></td> -->
             </tr>
         <?php endforeach ?>

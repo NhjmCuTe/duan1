@@ -5,32 +5,38 @@
         </div>
         <div class="col-4 menu">
             <ul>
-                <li class="menu_chinh"><a href="">HÀNG MỚI</a></li>
+                <li class="menu_chinh"><a href="index.php?act=ds_sp&sp_moi">HÀNG MỚI</a></li>
                 <li class="menu_chinh">
                     <a href="">SẢN PHẨM</a>
                     <ul class="menu_con">
                         <div class="menu_con_2">
-                            <?php foreach ($all_danhmuc_menu as $one_dm) {
-                                $mang_dm_con = explode(',', $one_dm['danh_muc_con']);
-                                echo '<li><a href="">' . $one_dm['ten_danhmuc'] . '</a>
-                                    <ul>';
-                                foreach ($mang_dm_con as $dm_con) {
-                                    echo '<li><a href="">' . $dm_con . '</a></li>';
-                                }
-                                echo '</ul>
-                                    </li>';
-                            } ?>
+
+                            <?php foreach ($all_danhmuc_menu as $one_dm) : $mang_dm_con = explode(',', $one_dm['danh_muc_con']);
+                                $mang_id_dmc = explode(',', $one_dm['id_danh_muc_con']) ?>
+
+                                <li><a href="index.php?act=ds_sp&id_dm=<?= $one_dm['id_danhmuc'] ?>"> <?= $one_dm['ten_danhmuc'] ?></a>
+                                    <ul>
+                                        <?php foreach (array_map(null, $mang_id_dmc, $mang_dm_con) as [$id, $dm_con]) : ?>
+                                            <li><a href="index.php?act=ds_sp&id_dmc=<?= $id ?>"><?= $dm_con ?></a></li>
+                                        <?php endforeach ?>
+                                    </ul>
+                                </li>
+                            <?php endforeach ?>
                         </div>
                     </ul>
                 </li>
-                <li class="menu_chinh"><a href="">SALE</a></li>
+                <li class="menu_chinh"><a href="index.php?act=ds_sp&sp_moi">SALE</a></li>
             </ul>
         </div>
         <div class="col-3">
-            <form class="tim_kiem">
-                <button type="submit"><i class="fas fa-search"></i></button>
-                <input type="search" placeholder="Tìm kiếm" aria-label="Search" />
+            <form class="tim_kiem needs-validation" novalidate action="index.php?act=ds_sp" method="post">
+                <input name="tu_khoa" required placeholder="Tìm kiếm" />
+                <button name="tim_kiem" value="tk" type="submit"><i class="fas fa-search"></i></button>
+                <div class="invalid-feedback">
+                    Vui lòng nhập từ khóa tìm kiếm
+                </div>
             </form>
+            
         </div>
         <div class="col-3">
             <div class="row item">
@@ -48,9 +54,9 @@
                         <i class="fa-regular fa-user"></i><span>Tài khoản</span>
                     </div>
                     <div class="thong_tin_dang_nhap">
-                        <div class="name"><a href="">Xin chào: <span><?= $_SESSION['user']['ten']  ?></span></a></div>
+                        <div class="name"><a href="index.php?act=tai_khoan">Xin chào: <span><?= $_SESSION['user']['ten']  ?></span></a></div>
                         <div class="link">
-                            <?= isset($_SESSION['user']['role']) == 1 ? '<a href="admin">Quản trị</a>' : '' ?>
+                            <?= isset($_SESSION['user']['role']) == 1 ? '<a href="admin" target="_blank">Quản trị</a>' : '' ?>
                             <a href="index.php?act=theo_doi_dh">Theo dõi đơn hàng</a>
                             <a href="index.php?act=dangxuat">Đăng xuất</a>
                         </div>

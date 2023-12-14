@@ -13,12 +13,12 @@ function all_san_pham()
   JOIN
     danh_muc_con dmc ON sp.id_danhmuc_con = dmc.id_danhmuc_con
   JOIN
-    danh_muc dm ON dmc.id_danhmuc = dm.id_danhmuc;
+    danh_muc dm ON dmc.id_danhmuc = dm.id_danhmuc
+    ORDER BY sp.id_sanpham DESC;
   ";
   $kq = pdo_query($sql);
   return $kq;
-  var_dump($kq);
-  die;
+
 }
 function xoa_san_pham($id_sanpham)
 {
@@ -113,24 +113,29 @@ function edit_san_pham($id_sanpham, $ten_sanpham, $gia, $mota, $danh_muc_con)
   pdo_execute($sql);
 }
 
-function them_anh_sp($id_mau, $ten_anh){
+function them_anh_sp($id_mau, $ten_anh)
+{
   $sql = "insert into anh(id_anh,img_anh,id_mau) values (null, '$ten_anh', $id_mau )";
   pdo_execute($sql);
 }
-function xoa_anh_sp($id_anh){
-  $sql= "delete from anh where id_anh = $id_anh";
+function xoa_anh_sp($id_anh)
+{
+  $sql = "delete from anh where id_anh = $id_anh";
   pdo_execute($sql);
 }
-function all_size(){
+function all_size()
+{
   $sql = "select * from kich_thuoc";
   $kq = pdo_query($sql);
   return $kq;
 }
-function them_kich_thuoc_sp($id_sanpham, $id_kichthuoc){
+function them_kich_thuoc_sp($id_sanpham, $id_kichthuoc)
+{
   $sql = "insert into sanpham_chitiet(id_sanpham_chitiet, id_sanpham, id_kichthuoc, id_mau, so_luong) values (null, $id_sanpham, $id_kichthuoc, null, null)";
   pdo_execute($sql);
 }
-function xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham){
+function xoa_kichthuoc_sp($id_kichthuoc, $id_sanpham)
+{
   $sql = "delete from sanpham_chitiet where id_sanpham = $id_sanpham and id_kichthuoc = $id_kichthuoc";
 
   pdo_execute($sql);
@@ -213,4 +218,51 @@ GROUP BY
 
 ";
   return pdo_query_one($sql);
+}
+function san_pham_theo_dk($id_dm = '', $id_dm_con = '', $tim_kiem = '', $kt = '')
+{
+  $sql = "SELECT
+  sp.id_sanpham,
+  sp.ten_sanpham,
+  sp.gia,
+  danh_muc.id_danhmuc,
+  danh_muc.ten_danhmuc,
+  danh_muc_con.id_danhmuc_con,
+  danh_muc_con.ten_danhmuc_con,
+  GROUP_CONCAT(m.img_mau) AS img_mau
+FROM
+  san_pham sp
+JOIN sanpham_chitiet c ON
+  sp.id_sanpham = c.id_sanpham
+JOIN mau m ON
+  c.id_mau = m.id_mau
+JOIN danh_muc_con ON sp.id_danhmuc_con = danh_muc_con.id_danhmuc_con
+JOIN danh_muc ON danh_muc.id_danhmuc = danh_muc_con.id_danhmuc
+
+";
+
+  if ($id_dm != '') {
+    $sql .= "where danh_muc.id_danhmuc = $id_dm ";
+  }
+  if ($id_dm_con != '') {
+    $sql .= "where danh_muc_con.id_danhmuc_con = $id_dm_con ";
+  }
+  if ($tim_kiem != '') {
+    $sql .= "where sp.ten_sanpham like '%$tim_kiem%' ";
+  }
+  if ($kt != '') {
+    $sql .= "WHERE
+    sp.id_sanpham IN (
+      SELECT DISTINCT c.id_sanpham
+      FROM sanpham_chitiet c
+      JOIN kich_thuoc kt ON c.id_kichthuoc = kt.id_kichthuoc
+      WHERE kt.ten_kichthuoc = '$kt' 
+    ) ";
+  }
+  $sql .= "GROUP BY
+  sp.id_sanpham,
+  sp.ten_sanpham,
+  sp.gia;";
+
+  return pdo_query($sql);
 }

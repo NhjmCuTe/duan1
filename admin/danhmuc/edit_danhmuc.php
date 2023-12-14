@@ -1,4 +1,4 @@
-<form id="form" class=" pt-9 px-9 " action="index.php?act=ds_danhmuc" method="post">
+<form id="form" class=" pt-9 px-9 needs-validation" novalidate action="index.php?act=ds_danhmuc" method="post">
 
     <div class="mb-3 row ">
 
@@ -13,9 +13,11 @@
             </div>
             <div class="col-sm-4">
                 <div class="form-floating">
-                    <input name="ten_dm" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?= $ten_danhmuc ?>">
+                    <input name="ten_dm" type="text" class="form-control" required id="floatingInput" placeholder="name@example.com" value="<?= $ten_danhmuc ?>">
                     <label for="floatingInputDisabled">Tên danh mục</label>
-
+                    <div class="invalid-feedback">
+                        Vui lòng nhập tên danh mục
+                    </div>
                 </div>
             </div>
         </div>

@@ -30,7 +30,31 @@ if (isset($_GET['act']) && $_GET['act']) {
 
    $act = $_GET['act'];
    switch ($act) {
+      case 'ds_sp':
+         if (isset($_GET['id_dm']) && $_GET['id_dm'] != '') {
+            $san_pham = san_pham_theo_dk($_GET['id_dm']);
+            if (!empty($san_pham)) {
+               $tu_khoa_tim = $san_pham[0]['ten_danhmuc'];
+            }
+         }
+         if (isset($_GET['id_dmc']) && $_GET['id_dmc'] != '') {
+            $san_pham = san_pham_theo_dk('', $_GET['id_dmc']);
+            if (!empty($san_pham)) {
+               $tu_khoa_tim = $san_pham[0]['ten_danhmuc_con'];
+            }
+         }
+         if (isset($_POST['tim_kiem']) && $_POST['tim_kiem'] != '') {
+            $san_pham = san_pham_theo_dk('', '', $_POST['tu_khoa']);
+            $tu_khoa_tim = $_POST['tu_khoa'];
+         }
+         if (isset($_GET['sp_moi'])) {
+            $san_pham = san_pham_theo_dk();
+         }
+         $all_kich_thuoc = all_size();
+         include "view/san_pham/san_pham.php";
+         break;
       case 'chitiet_sp':
+
          if (isset($_GET['id_mau']) && $_GET['id_mau']) {
             $mang_anh = anh_theo_mau($_GET['id_mau']);
          }
@@ -91,45 +115,44 @@ if (isset($_GET['act']) && $_GET['act']) {
             $pass = $_POST['password'];
             $duong_dan = 'location:' . $_POST['duong_dan_hien_tai'];
             $checkuser = checkuser($user, $pass);
-            // var_dump($checkuser);die;
+            header($duong_dan);
             if (is_array($checkuser)) {
-               extract($checkuser);
-               $_SESSION['user'] = $checkuser;
+               
                header($duong_dan);
-         // define variables and set to empty values
-         // $userErr = $passErr = "";
-         // $user = $pass = "";
+               // define variables and set to empty values
+               // $userErr = $passErr = "";
+               // $user = $pass = "";
 
-         // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-         //    if (empty($_POST['username'])) {
-         //       $userErr = "Tài khoản không được để trống!";
-         //    }
-         //    if (empty($_POST['password'])) {
-         //       $passErr = "Mật khẩu không được để trống!";
-         //    } else {
-         //       $user = test_input($_POST['username']);
-         //       $pass = test_input($_POST["password"]);
+               // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+               //    if (empty($_POST['username'])) {
+               //       $userErr = "Tài khoản không được để trống!";
+               //    }
+               //    if (empty($_POST['password'])) {
+               //       $passErr = "Mật khẩu không được để trống!";
+               //    } else {
+               //       $user = test_input($_POST['username']);
+               //       $pass = test_input($_POST["password"]);
 
-         //       if (!preg_match("/^[a-zA-Z0-9]*$/", $user)) {
-         //          $userErr = "Chỉ chữ cái và số được cho phép!";
-         //       } else if (!preg_match("/^[a-zA-Z0-9]*$/", $pass)) {
-         //          $passErr = "Chỉ chữ cái và số được cho phép!";
-         //       } else {
-         //          $checkuser = checkuser($user, $pass);
-         //          // var_dump($checkuser);die;
-         //          if (is_array($checkuser)) {
-         //             extract($checkuser);
+               //       if (!preg_match("/^[a-zA-Z0-9]*$/", $user)) {
+               //          $userErr = "Chỉ chữ cái và số được cho phép!";
+               //       } else if (!preg_match("/^[a-zA-Z0-9]*$/", $pass)) {
+               //          $passErr = "Chỉ chữ cái và số được cho phép!";
+               //       } else {
+               //          $checkuser = checkuser($user, $pass);
+               //          // var_dump($checkuser);die;
+               //          if (is_array($checkuser)) {
+               //             extract($checkuser);
 
-         //             $_SESSION['user'] = $checkuser;
-         //             if ($role == 1) {
-         //                header('location: admin/index.php');
-         //             } else {
-         //                header('location: index.php');
-         //             }
-         //          } else {
-         //             $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
-         //          }
-         //       }
+               //             $_SESSION['user'] = $checkuser;
+               //             if ($role == 1) {
+               //                header('location: admin/index.php');
+               //             } else {
+               //                header('location: index.php');
+               //             }
+               //          } else {
+               //             $thongbao = "Tài khoản không tồn tại. Vui lòng kiểm tra lại hoặc đăng ký!";
+               //          }
+               //       }
             }
          }
 
@@ -148,55 +171,55 @@ if (isset($_GET['act']) && $_GET['act']) {
             $duong_dan = 'location:' . $_POST['duong_dan_hien_tai'];
             // echo $duong_dan;die;
             header($duong_dan);
-         include "view/dangnhap.php";
-         break;
+            include "view/dangnhap.php";
+            break;
 
-      // case 'dangky':
-      //    $userErr = $passErr = $emailErr = $sdtErr = $addressErr = "";
-      //    $user = $pass = $email = $sdt = $address = "";
+            // case 'dangky':
+            //    $userErr = $passErr = $emailErr = $sdtErr = $addressErr = "";
+            //    $user = $pass = $email = $sdt = $address = "";
 
-      //    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      //       if (empty($_POST['username'])) {
-      //          $userErr = "Tài khoản không được để trống!";
-      //       }
-      //       if (empty($_POST['password'])) {
-      //          $passErr = "Mật khẩu không được để trống!";
-      //       }
-      //       if (empty($_POST['email'])) {
-      //          $emailErr = "Email không được để trống!";
-      //       }
-      //       if (empty($_POST['sdt'])) {
-      //          $sdtErr = "Số điện thoại không được để trống!";
-      //       }
-      //       if (empty($_POST['address'])) {
-      //          $addressErr = "Địa chỉ không được để trống!";
-      //       } else {
-      //          $user = test_input($_POST['username']);
-      //          $pass = test_input($_POST["password"]);
-      //          $email = test_input($_POST["email"]);
-      //          $sdt = test_input($_POST["sdt"]);
-      //          $address = test_input($_POST["address"]);
+            //    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            //       if (empty($_POST['username'])) {
+            //          $userErr = "Tài khoản không được để trống!";
+            //       }
+            //       if (empty($_POST['password'])) {
+            //          $passErr = "Mật khẩu không được để trống!";
+            //       }
+            //       if (empty($_POST['email'])) {
+            //          $emailErr = "Email không được để trống!";
+            //       }
+            //       if (empty($_POST['sdt'])) {
+            //          $sdtErr = "Số điện thoại không được để trống!";
+            //       }
+            //       if (empty($_POST['address'])) {
+            //          $addressErr = "Địa chỉ không được để trống!";
+            //       } else {
+            //          $user = test_input($_POST['username']);
+            //          $pass = test_input($_POST["password"]);
+            //          $email = test_input($_POST["email"]);
+            //          $sdt = test_input($_POST["sdt"]);
+            //          $address = test_input($_POST["address"]);
 
-      //          $checkEmail = checkEmail($email);
-      //          $checkussername = checkUsername($user);
+            //          $checkEmail = checkEmail($email);
+            //          $checkussername = checkUsername($user);
 
-      //          if (!preg_match("/^[a-zA-Z0-9]*$/", $user)) {
-      //             $userErr = "Chỉ chữ cái và số được cho phép!";
-      //          } else if (!preg_match("/^[a-zA-Z0-9]*$/", $pass)) {
-      //             $passErr = "Chỉ chữ cái và số được cho phép!";
-      //          } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      //             $emailErr = "Định dạng email sai!";
-      //          } else if (!preg_match("/^[0-9]*$/", $sdt)) {
-      //             $sdtErr = "Chỉ số được cho phép!";
-      //          } else if (is_array($checkEmail)) {
-      //             $emailErr = "Email đã được sử dụng, vui lòng nhập email khác!";
-      //          } else if (is_array($checkussername)) {
-      //             $userErr = "Tên tài khoản đã được sử dụng, vui lòng nhập tên tài khoản khác!";
-      //          } else {
-      //             insert_taikhoan($user, $pass, $email, $sdt, $address);
-      //             $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
-      //          }
-      //       }
+            //          if (!preg_match("/^[a-zA-Z0-9]*$/", $user)) {
+            //             $userErr = "Chỉ chữ cái và số được cho phép!";
+            //          } else if (!preg_match("/^[a-zA-Z0-9]*$/", $pass)) {
+            //             $passErr = "Chỉ chữ cái và số được cho phép!";
+            //          } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            //             $emailErr = "Định dạng email sai!";
+            //          } else if (!preg_match("/^[0-9]*$/", $sdt)) {
+            //             $sdtErr = "Chỉ số được cho phép!";
+            //          } else if (is_array($checkEmail)) {
+            //             $emailErr = "Email đã được sử dụng, vui lòng nhập email khác!";
+            //          } else if (is_array($checkussername)) {
+            //             $userErr = "Tên tài khoản đã được sử dụng, vui lòng nhập tên tài khoản khác!";
+            //          } else {
+            //             insert_taikhoan($user, $pass, $email, $sdt, $address);
+            //             $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập";
+            //          }
+            //       }
          }
 
          break;
@@ -208,8 +231,40 @@ if (isset($_GET['act']) && $_GET['act']) {
       case 'theo_doi_dh':
          if (isset($_SESSION['user']) && $_SESSION['user']) {
             $don_hang = don_hang_user($_SESSION['user']['id_taikhoan']);
+            include "view/tai_khoan/menu.php";
             include "view/tai_khoan/don_hang.php";
          }
+         break;
+      case 'chi_tiet_dh':
+         $duong_dan = 'location: index.php?act=chi_tiet_dh&id_don_hang=' . $_GET['id_don_hang'];
+         if (isset($_GET['huy_dh']) && $_GET['huy_dh'] != '') {
+            huy_dh($_GET['huy_dh']);
+            header($duong_dan);
+         }
+         if (isset($_GET['nhan_dh']) && $_GET['nhan_dh'] != '') {
+            nhan_dh($_GET['nhan_dh']);
+            header($duong_dan);
+         }
+         if (isset($_GET['id_don_hang']) && $_GET['id_don_hang'] != '') {
+            $thong_tin_dh = thong_tin_dh_user($_GET['id_don_hang']);
+            $thong_tin_sp = chi_tiet_dh($_GET['id_don_hang']);
+            include "view/tai_khoan/menu.php";
+            include "view/tai_khoan/chi_tiet_dh.php";
+         }
+         break;
+      case 'tai_khoan':
+         if (isset($_POST['cap_nhat_tk']) && $_POST['cap_nhat_tk']) {
+            $id = $_POST['id_tk'];
+            $user = $_POST['username'];
+            $pass = $_POST['password'];
+            $email = $_POST['email'];
+            $sdt = $_POST['sdt'];
+            update_taikhoan($id, $user, $pass, $email, $sdt);
+            checkuser($user,$pass);
+            $thong_bao_thanh_cong="Cập nhật thành công";
+         }
+         include "view/tai_khoan/menu.php";
+         include "view/tai_khoan/tai_khoan.php";
          break;
       default:
          include "view/banner.php";

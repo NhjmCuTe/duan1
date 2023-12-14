@@ -21,41 +21,60 @@
                 <div class="ten_dau"><i class="fa-light fa-map-location-dot"></i>
                     <h1>Thông tin giao hàng</h1>
                 </div>
-                <form action="index.php?act=dat_hang&an" method="post">
+                <form class="needs-validation" novalidate action="index.php?act=dat_hang&an" method="post">
                     <div class="form-floating mb-3">
-                        <input name="ho_ten" type="text" class="form-control" id="floatingInput" placeholder="" value="<?= isset($_SESSION['user']['ten']) ? $_SESSION['user']['ten'] : '' ?>">
+                        <input name="ho_ten" required type="text" class="form-control" id="floatingInput" placeholder="" value="<?= isset($_SESSION['user']['ten']) ? $_SESSION['user']['ten'] : '' ?>">
                         <label for="floatingInput">Họ tên:</label>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập họ tên
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <input name="sdt" type="text" class="form-control" id="floatingInput" placeholder="" value="<?= isset($_SESSION['user']['sdt']) ? $_SESSION['user']['sdt'] : '' ?>">
+                        <input name="sdt" required type="text" class="form-control" id="floatingInput" placeholder="" value="<?= isset($_SESSION['user']['sdt']) ? $_SESSION['user']['sdt'] : '' ?>">
                         <label for="floatingInput">Số điện thoại:</label>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập số điện thoại
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <select class="form-select diachi" id="city" aria-label="Floating label select example" data-target="tinh">
+                        <select class="form-select diachi" required id="city" aria-label="Floating label select example" data-target="tinh">
                             <!-- <option value=""></option> -->
 
                         </select>
                         <label for="floatingSelect ">Tỉnh / Thành phố:</label>
+
+                        <div class="invalid-feedback">
+                            Vui lòng chọn Tỉnh / Thành phố
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <select class="form-select diachi" id="district" aria-label="Floating label select example" data-target="quan">
+                        <select class="form-select diachi" required id="district" aria-label="Floating label select example" data-target="quan">
                             <!-- <option value=""></option> -->
                         </select>
                         <label for="floatingSelect">Quận / Huyện:</label>
+                        <div class="invalid-feedback">
+                            Vui lòng chọn Quận / Huyện
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
-                        <select class="form-select diachi" id="ward" aria-label="Floating label select example" data-target="xa">
+                        <select class="form-select diachi" required id="ward" aria-label="Floating label select example" data-target="xa">
                             <!-- <option value=""></option> -->
 
                         </select>
                         <label for="floatingSelect">Phường / Xã:</label>
+                        <div class="invalid-feedback">
+                            Vui lòng chọn Phường / Xã
+                        </div>
                     </div>
                     <input type="hidden" name="xa" id="xa">
                     <input type="hidden" name="quan" id="quan">
                     <input type="hidden" name="tinh" id="tinh">
                     <div class="form-floating mb-3">
-                        <input name="chi_tiet" type="text" class="form-control" id="floatingInput" placeholder="">
+                        <input name="chi_tiet" required type="text" class="form-control" id="floatingInput" placeholder="">
                         <label for="floatingInput">Nhập địa chỉ:</label>
+                        <div class="invalid-feedback">
+                            Vui lòng nhập địa chỉ
+                        </div>
                     </div>
                     <div class="form-floating mb-3">
                         <input name="ghi_chu" type="text" class="form-control" id="floatingInput" placeholder="">
@@ -68,11 +87,11 @@
                     <h1>Phương thức thanh toán</h1>
                 </div>
                 <label>
-                    <input type="radio" name="cach_thanh_toan" value="cod" checked><img src="<?= $duong_dan_anh ?>cod.png" alt="">Thanh toán khi nhận hàng (COD)
+                    <input type="radio" name="cach_thanh_toan" value="Thanh toán khi nhận hàng (COD)" checked><img src="<?= $duong_dan_anh ?>cod.png" alt="">Thanh toán khi nhận hàng (COD)
                 </label>
-                <label>
-                    <input type="radio" name="cach_thanh_toan" value="vnpay"><img src="<?= $duong_dan_anh ?>vnpay.png" alt="">Thanh toán bằng VNPAY
-                </label>
+                <!-- <label>
+                    <input type="radio" name="cach_thanh_toan" value="Thanh toán qua VNPAY"><img src="<?= $duong_dan_anh ?>vnpay.png" alt="">Thanh toán bằng VNPAY
+                </label> -->
 
             </div>
             <div class="san_pham_thanh_toan khung">
@@ -133,4 +152,23 @@
             console.log(hiddenInput.value);
         });
     });
+
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
 </script>

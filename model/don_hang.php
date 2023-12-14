@@ -22,28 +22,140 @@ function them_don_hang($tong_sl, $tong_tien, $ten_kh, $dia_chi, $sdt, $cach_than
     $sql_2 = "SELECT MAX(id_donhang) AS last_giohang_id FROM don_hang";
     return pdo_query_one($sql_2);
 }
-function ds_donhang()
+function ds_donhang_chua_xong()
 {
     $sql = "SELECT
-    don_hang.id_donhang, don_hang.id_taikhoan, don_hang.so_luong_mua, don_hang.tong_tien, don_hang.ten_khachhang, don_hang.dia_chi, don_hang.sdt, don_hang.cach_thanh_toan, don_hang.ghi_chu,
-    DATE_FORMAT(don_hang.ngay_dat_hang, '%H:%i %d-%m-%Y') as ngay_dat_hang,
+    don_hang.id_donhang,
+    don_hang.id_taikhoan,
+    don_hang.so_luong_mua,
+    don_hang.tong_tien,
+    don_hang.ten_khachhang,
+    don_hang.dia_chi,
+    don_hang.sdt,
+    don_hang.cach_thanh_toan,
+    don_hang.ghi_chu,
+    don_hang.thanh_cong,
+    DATE_FORMAT(
+        don_hang.ngay_dat_hang,
+        '%H:%i %d-%m-%Y'
+    ) AS ngay_dat_hang,
     GROUP_CONCAT(
         trang_thai.trang_thai
-   ORDER BY
-        trang_thai.time
-    asc
+    ORDER BY
+        trang_thai.time ASC
     ) AS trang_thai,
-    GROUP_CONCAT(DATE_FORMAT(trang_thai.time, '%H:%i %d-%m-%Y') ORDER  BY trang_thai.time asc) AS thoi_gian
+    GROUP_CONCAT(
+        DATE_FORMAT(
+            trang_thai.time,
+            '%H:%i %d-%m-%Y'
+        )
+    ORDER BY
+        trang_thai.time ASC
+    ) AS thoi_gian
 FROM
     don_hang
 LEFT JOIN trang_thai ON don_hang.id_donhang = trang_thai.id_donhang
+WHERE don_hang.thanh_cong = 0
 GROUP BY
     don_hang.id_donhang
 ORDER BY
     don_hang.id_donhang
-DESC
-    ;";
+DESC";
     return pdo_query($sql);
+}
+function ds_donhang_tc()
+{
+    $sql = "SELECT
+    don_hang.id_donhang,
+    don_hang.id_taikhoan,
+    don_hang.so_luong_mua,
+    don_hang.tong_tien,
+    don_hang.ten_khachhang,
+    don_hang.dia_chi,
+    don_hang.sdt,
+    don_hang.cach_thanh_toan,
+    don_hang.ghi_chu,
+    don_hang.thanh_cong,
+    DATE_FORMAT(
+        don_hang.ngay_dat_hang,
+        '%H:%i %d-%m-%Y'
+    ) AS ngay_dat_hang,
+    GROUP_CONCAT(
+        trang_thai.trang_thai
+    ORDER BY
+        trang_thai.time ASC
+    ) AS trang_thai,
+    GROUP_CONCAT(
+        DATE_FORMAT(
+            trang_thai.time,
+            '%H:%i %d-%m-%Y'
+        )
+    ORDER BY
+        trang_thai.time ASC
+    ) AS thoi_gian
+FROM
+    don_hang
+LEFT JOIN trang_thai ON don_hang.id_donhang = trang_thai.id_donhang
+WHERE don_hang.thanh_cong = 1
+GROUP BY
+    don_hang.id_donhang
+ORDER BY
+    don_hang.id_donhang
+DESC";
+    return pdo_query($sql);
+}
+function ds_donhang_huy()
+{
+    $sql = "SELECT
+    don_hang.id_donhang,
+    don_hang.id_taikhoan,
+    don_hang.so_luong_mua,
+    don_hang.tong_tien,
+    don_hang.ten_khachhang,
+    don_hang.dia_chi,
+    don_hang.sdt,
+    don_hang.cach_thanh_toan,
+    don_hang.ghi_chu,
+    don_hang.thanh_cong,
+    DATE_FORMAT(
+        don_hang.ngay_dat_hang,
+        '%H:%i %d-%m-%Y'
+    ) AS ngay_dat_hang,
+    GROUP_CONCAT(
+        trang_thai.trang_thai
+    ORDER BY
+        trang_thai.time ASC
+    ) AS trang_thai,
+    GROUP_CONCAT(
+        DATE_FORMAT(
+            trang_thai.time,
+            '%H:%i %d-%m-%Y'
+        )
+    ORDER BY
+        trang_thai.time ASC
+    ) AS thoi_gian
+FROM
+    don_hang
+LEFT JOIN trang_thai ON don_hang.id_donhang = trang_thai.id_donhang
+WHERE don_hang.thanh_cong = 2
+GROUP BY
+    don_hang.id_donhang
+ORDER BY
+    don_hang.id_donhang
+DESC";
+    return pdo_query($sql);
+}
+function hoan_thanh_dh($id_donhang){
+    $sql="UPDATE don_hang SET thanh_cong = 1 WHERE id_donhang = $id_donhang; 
+    INSERT INTO trang_thai (trang_thai, id_donhang) VALUES ('Đơn hàng: hoàn thành', $id_donhang)
+    ";
+    pdo_execute($sql);
+}
+function huy_dh_admin($id_donhang){
+    $sql="UPDATE don_hang SET thanh_cong = 2 WHERE id_donhang = $id_donhang; 
+    INSERT INTO trang_thai (trang_thai, id_donhang) VALUES ('Đơn hàng: hủy', $id_donhang)
+    ";
+    pdo_execute($sql);
 }
 function chi_tiet_dh($id_donhang)
 {
@@ -70,4 +182,37 @@ function don_hang_user($id_tk)
      GROUP BY don_hang.id_donhang 
      ORDER BY don_hang.id_donhang DESC;";
     return pdo_query($sql);
+}
+function thong_tin_dh_user($id_donhang)
+{
+    $sql = "SELECT
+    don_hang.id_donhang, don_hang.id_taikhoan, don_hang.so_luong_mua, don_hang.tong_tien, don_hang.ten_khachhang, don_hang.dia_chi, don_hang.sdt, don_hang.cach_thanh_toan, don_hang.ghi_chu,
+    DATE_FORMAT(don_hang.ngay_dat_hang, '%H:%i %d-%m-%Y') as ngay_dat_hang,
+    GROUP_CONCAT(
+        trang_thai.trang_thai
+   ORDER BY
+        trang_thai.time
+    asc
+    ) AS trang_thai,
+    GROUP_CONCAT(DATE_FORMAT(trang_thai.time, '%H:%i %d-%m-%Y') ORDER  BY trang_thai.time asc) AS thoi_gian
+FROM
+    don_hang
+LEFT JOIN trang_thai ON don_hang.id_donhang = trang_thai.id_donhang
+WHERE don_hang.id_donhang = $id_donhang
+GROUP BY
+    don_hang.id_donhang";
+    return pdo_query_one($sql);
+}
+function huy_dh($id_donhang)
+{
+    $sql = "INSERT INTO trang_thai (trang_thai, id_donhang) VALUES ('Khách hàng: Đã hủy đơn', $id_donhang);
+    UPDATE don_hang SET thanh_cong = 2 WHERE id_donhang = $id_donhang";
+    pdo_execute($sql);
+}
+function nhan_dh($id_donhang)
+{
+    $sql = "INSERT INTO trang_thai (trang_thai, id_donhang) VALUES ('Khách hàng: Đã nhận được hàng', $id_donhang);
+    UPDATE don_hang SET thanh_cong = 1 WHERE id_donhang = $id_donhang
+    ";
+    pdo_execute($sql);
 }

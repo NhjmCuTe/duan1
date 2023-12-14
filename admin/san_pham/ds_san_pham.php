@@ -1,4 +1,4 @@
-<h1 class="text-center">Toàn bộ sản phẩm</h1>
+<h1 class="text-center">Toàn bộ sản phẩm (<?= $sl_sp['sl_sp'] ?>)</h1>
 <a href="index.php?act=them_sp"><button class="btn btn-primary">Thêm sản phẩm</button></a>
 <table class="table bang table-hover">
     <thead>
@@ -25,7 +25,7 @@
                 <td><?= $ten_danhmuc_con ?></td>
                 <td><a href="index.php?act=chi_tiet_sp&id_sp=<?= $id_sanpham ?>" >Chi tiết</a></td>
                 <td><a href="index.php?act=ds_san_pham&id_sp_xoa=<?= $id_sanpham ?>" onclick="return confirm('bạn có chắc là muốn xóa')">Xóa</a></td>
-                <td><a href="index.php?act=edit_san_pham&id_sp=<?= $id_sanpham ?>">Sửa</a></td>
+                <td><a href="index.php?act=edit_san_pham&id_sp=<?= $id_sanpham ?>" onclick="return confirm('bạn có chắc là muốn sửa sản phẩm này')">Sửa</a></td>
             </tr>
         <?php endforeach ?>
     </tbody>

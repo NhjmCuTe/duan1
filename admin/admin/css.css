@@ -4,3 +4,24 @@
 .hidden-input {
     display: none;
 }
+.thong_ke .khung{
+    background-color: white;
+    box-shadow: rgba(145,158,171,0.12) 10px 12px 24px -4px;;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #deeaf4;
+    border-radius: 10px;
+}
+.thong_ke{
+    margin-left: 50px;
+}
+.quay_lai a{
+    color: red;
+    font-weight: 500;
+}
+.quay_lai span{
+    font-weight: 600;
+}
+.quay_lai a:hover{
+    color: rgb(0, 8, 253);
+}

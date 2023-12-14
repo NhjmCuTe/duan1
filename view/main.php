@@ -31,9 +31,9 @@
             <div class="img-prd">
               <div class="img"><a href="index.php?act=chitiet_sp&id_sp=<?= $value['id_sanpham'] ?>">
                   <img src="<?= $duong_dan_anh . $mang_anh[0] ?>" alt="" /></a></div>
-              <a href="index.php?"><button class="add-to-cart">
-                  <span>Thêm nhanh vào giỏ</span>
-                </button></a>
+              <button class="add-to-cart">
+                  <span>Xem sản phẩm</span>
+                </button>
             </div>
             <div class="info-prd">
               <div class="bang_mau">
@@ -47,7 +47,7 @@
               <h6 class="product-item-name">
                 <a href="index.php?act=chitiet_sp&id_sp=<?= $value['id_sanpham'] ?>"><?= $ten_sanpham ?></a>
               </h6>
-              <span class="price" ><?= number_format($gia,0,'','.')?> đ</span>
+              <span class="price"><?= number_format($gia, 0, '', '.') ?> đ</span>
             </div>
           </div>
 

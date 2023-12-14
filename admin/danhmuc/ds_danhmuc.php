@@ -1,13 +1,16 @@
-<h1 class="text-center">Toàn bộ danh mục</h1>
+<h1 class="text-center">Toàn bộ danh mục (<?= $sl_dm['sl_dm'] ?>)</h1>
 <div class="hien_thi"><button class="btn btn-primary button">Thêm danh mục</button>
-    <form class="pt-9 px-9 form" style="display: none;" action="index.php?act=ds_danhmuc" method="post">
+    <form class="pt-9 px-9 form needs-validation" novalidate style="display: none;" action="index.php?act=ds_danhmuc" method="post">
 
         <div class="mb-3 row">
             <div class="row mb-3 col-md-4">
 
                 <div class="form-floating">
-                    <input name="danh_muc" type="text" class="form-control" id="floatingInput" placeholder="">
-                    <label for="floatingInput">Tên danh mục</label>
+                    <input name="danh_muc" type="text" class="form-control" placeholder="" required>
+                    <label>Tên danh mục</label>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập tên danh mục
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">

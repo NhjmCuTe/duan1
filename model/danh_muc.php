@@ -75,7 +75,8 @@ function danhmuc_menu()
     $sql = "SELECT
     dm.id_danhmuc,
     dm.ten_danhmuc,
-    GROUP_CONCAT(dmc.ten_danhmuc_con) AS danh_muc_con
+    GROUP_CONCAT(dmc.ten_danhmuc_con) AS danh_muc_con,
+    GROUP_CONCAT(dmc.id_danhmuc_con) AS id_danh_muc_con
 FROM
     danh_muc dm
 LEFT JOIN

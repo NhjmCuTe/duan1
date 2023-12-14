@@ -1,6 +1,6 @@
-<h1 class="text-center">Toàn bộ kích thước</h1>
+<h1 class="text-center">Toàn bộ kích thước (<?= $sl_kt['sl_kt'] ?>)</h1>
 <div class="hien_thi"><button class="btn btn-primary button">Thêm kích thước</button>
-    <form class="pt-9 px-9 form" style="display: none;" action="index.php?act=ds_kichthuoc" method="post">
+    <form class="pt-9 px-9 form needs-validation" novalidate style="display: none;" action="index.php?act=ds_kichthuoc" method="post">
 
         <div class="mb-3 row">
             <input type="hidden" name="id_mau" value="<?= $anh_theo_mau[0]['id_mau'] ?>" placeholder="123">
@@ -8,16 +8,19 @@
             <div class="row col-5">
 
                 <div class="form-floating">
-                    <input name="kich_thuoc" type="text" class="form-control" id="floatingInput" placeholder="">
+                    <input name="kich_thuoc" required type="text" class="form-control" id="floatingInput" placeholder="">
                     <label for="floatingInput">Tên kích thước</label>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập tên kích thước
+                    </div>
                 </div>
-                
+
             </div>
             <div class="col-7">
                 <button name="them_kich_thuoc" class="btn btn-primary" style="height: 58px;" value="them_kt">Thêm kích thước</button>
             </div>
         </div>
-        
+
     </form>
 </div>
 

@@ -1,4 +1,7 @@
 <h1 class="text-center">Chi tiết đơn hàng</h1>
+<div class="quay_lai" style="font-size: 20px; margin-bottom: 20px; ">
+<a href="javascript:history.back()" ><span><i class="fa-regular fa-left" style="margin-right: 10px;"></i>Quay lại</span></a>
+</div>
 <table class="table bang table-hover">
     <thead>
         <tr>

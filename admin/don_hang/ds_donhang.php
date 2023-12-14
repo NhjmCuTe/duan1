@@ -1,4 +1,6 @@
-<h1 class="text-center">Toàn bộ đơn hàng</h1>
+<h1 class="text-center">Toàn bộ đơn hàng cần xác nhận (<?= $sl_dh['sl_dh'] ?>)</h1>
+<a href="index.php?act=ds_don_hang_tc"><button class="btn btn-primary">Đơn hàng thành công</button></a>
+<a href="index.php?act=ds_don_hang_huy"><button class="btn btn-danger">Đơn hàng hủy</button></a>
 <table class="table bang table-hover">
     <thead>
         <tr>
@@ -29,7 +31,7 @@
                 <th scope="row"><?= $id_donhang ?></th>
                 <th><?= $ngay_dat_hang ?></th>
                 <td><?= $so_luong_mua ?></td>
-                <td><?= number_format($tong_tien,0,'','.')  ?></td>
+                <td><?= number_format($tong_tien, 0, '', '.')  ?></td>
                 <td><?= $ten_khachhang ?></td>
                 <td><?= $dia_chi ?></td>
                 <td><?= $sdt ?></td>
@@ -39,7 +41,7 @@
                 <td><a href="index.php?act=chi_tiet_dh&id_dh=<?= $id_donhang ?>">Chi tiết</a></td>
 
 
-                
+
                 <!-- <td><a href="index.php?act=ds_san_pham&id_sp_xoa=<?= $id_sanpham ?>" onclick="return confirm('bạn có chắc là muốn xóa')">Xóa</a></td>
                 <td><a href="index.php?act=edit_san_pham&id_sp=<?= $id_sanpham ?>">Sửa</a></td> -->
             </tr>
@@ -61,11 +63,15 @@
                     <form action="index.php?act=ds_donhang" method="post">
                         <div class="form-floating  trang_thai">
                             <select name="trang_thai" class="form-select mt-4" id="floatingSelect" aria-label="Floating label select example">
-                               
-                                <option value="Đã xác nhận">Đã xác nhận</option>
-                                <option value="Đang giao hàng">Đang giao hàng</option>
-                                <option value="Đã giao hàng">Đã giao hàng</option>
-                                <option value="Đã hủy">Đã hủy</option>
+                                <?php if (!in_array("Đã xác nhận", $mang_trang_thai)) : ?>
+                                    <option value="Đã xác nhận">Đã xác nhận</option>
+                                <?php elseif (!in_array("Đang giao hàng", $mang_trang_thai)) : ?>
+                                    <option value="Đang giao hàng">Đang giao hàng</option>
+                                <?php elseif (!in_array("Đã giao hàng", $mang_trang_thai)) : ?>
+                                    <option value="Đã giao hàng">Đã giao hàng</option>
+                                <?php endif ?>
+
+
                             </select>
                             <label for="floatingSelect">Chọn trạng thái</label>
                         </div>
@@ -74,8 +80,10 @@
                         <input name="check" type="checkbox" id="checkbox1" class="check_box mt-3 mb-4 ms-3">
                         <input name="trang_thai_khac" class="form-control form-control-lg hidden-input" type="text" placeholder="Nhập trạng thái" aria-label=".form-control-lg example">
                         <br>
-                        <button name="thay_doi" type="submit" class="btn btn-primary mt-2" style="width: 100%;" onclick="return confirm('bạnc có muốn cập nhật trạng thái không?')">Thay đổi</button>
+                        <button name="thay_doi" type="submit" class="btn btn-primary mt-2" style="width: 100%;" onclick="return confirm('bạn có muốn cập nhật trạng thái không?')">Thay đổi</button>
                     </form>
+                    <a href="index.php?act=ds_don_hang_tc&id_dh=<?= $id_donhang ?>" onclick="return confirm('bạn có chắc đơn hàng đã hoàn thành')"><button class="btn btn-success mt-2" style="width: 100%;">Hoàn thành đơn hàng</button></a>
+                    <a href="index.php?act=ds_don_hang_huy&id_dh=<?= $id_donhang ?>" onclick="return confirm('bạn có chắc hủy đơn hàng')"><button class="btn btn-danger mt-2" style="width: 100%;">Hủy đơn hàng</button></a>
                 </div>
             </div>
 

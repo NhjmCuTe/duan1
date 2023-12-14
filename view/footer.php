@@ -1,4 +1,5 @@
-<div class="footer container">
+<div class="footer ">
+  <div class="container">
   <div class="title-bst">
     <h2>ƯU ĐÃI</h2>
     <div class="online">
@@ -61,9 +62,9 @@
     </div>
   </div>
   </article>
-
+  </div>
   <footer class="site-footer">
-    <div class="container footer2">
+    <div class="footer2 container">
       <div class="footer-content">
         <div class="row">
           <div class="footer-colum1">

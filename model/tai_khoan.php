@@ -15,7 +15,7 @@ function checkUsername($user)
 }
 
 // thêm tài khoản ki đăng kí
-function insert_taikhoan($user, $pass, $email, $sdt, $address)
+function insert_taikhoan($user, $pass, $email='', $sdt, $address='')
 {
     $sql = "INSERT INTO tai_khoan(ten,pass,email,sdt,address) VALUES ('$user','$pass','$email','$sdt','$address') ";
     pdo_execute($sql);
@@ -26,7 +26,12 @@ function checkuser($user, $pass)
 {
     $sql = "select * from tai_khoan where ten='" . $user . "' and pass='" . $pass . "'";
     $checkuser = pdo_query_one($sql);
+    if (is_array($checkuser)) {
+        extract($checkuser);
+        $_SESSION['user'] = $checkuser;
+    }
     return $checkuser;
+
 }
 
 //load All danh sách tài khoản
@@ -45,8 +50,9 @@ function tk_nguoidung()
 }
 
 //xuất thông tin tài khoản của người dùng
-function loadOne_taikhoan($id){
-    $sql = "select * from tai_khoan where id_taikhoan='".$id."'";
+function loadOne_taikhoan($id)
+{
+    $sql = "select * from tai_khoan where id_taikhoan='" . $id . "'";
     $kq = pdo_query_one($sql);
     return $kq;
 }
@@ -59,13 +65,15 @@ function loadOne_taikhoan($id){
 // }
 
 // thay đổi thông tin dùng
-function update_taikhoan($id,$user,$pass,$email,$sdt,$address){
-    $sql = "update tai_khoan set ten='".$user."',  pass='".$pass."' ,email='".$email."' ,sdt='".$sdt."' ,address='".$address."'  where id_taikhoan='".$id."'";
+function update_taikhoan($id, $user, $pass, $email, $sdt, $address = '')
+{
+    $sql = "update tai_khoan set ten='" . $user . "',  pass='" . $pass . "' ,email='" . $email . "' ,sdt='" . $sdt . "' ,address='" . $address . "'  where id_taikhoan='" . $id . "'";
     pdo_execute($sql);
 }
 
 //xóa người dùng
-function xoa_tk($id_tk){
+function xoa_tk($id_tk)
+{
     $sql = "delete from tai_khoan where id_taikhoan = $id_tk";
     pdo_execute($sql);
 }

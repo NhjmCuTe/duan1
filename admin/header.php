@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modernize Free</title>
 
-
+    
+    <link rel="stylesheet" href="admin/style_tongquan.css" />
     <link rel="stylesheet" href="admin/src/assets/css/styles.min.css" />
     <link rel="stylesheet" href="admin/css.css">
     <script src="admin/js.js"></script>
+    <link rel="stylesheet" href="../font-awesome-6-pro-main/css/all.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -35,7 +38,7 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="index.php" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=thong_ke" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -49,7 +52,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="index.php?act=ds_danhmuc" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-article"></i>
+                                <i class="fa-regular fa-list"></i>
                                 </span>
                                 <span class="hide-menu">Danh mục</span>
                             </a>
@@ -57,7 +60,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="index.php?act=ds_san_pham" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-alert-circle"></i>
+                                <i class="fa-regular fa-cart-shopping"></i>
                                 </span>
                                 <span class="hide-menu">Sản phẩm</span>
                             </a>
@@ -65,7 +68,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="index.php?act=ds_kichthuoc" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-cards"></i>
+                                <i class="fa-solid fa-text-size"></i>
                                 </span>
                                 <span class="hide-menu">Kích thước</span>
                             </a>
@@ -73,7 +76,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="index.php?act=ds_taikhoan" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-file-description"></i>
+                                <i class="fa-regular fa-users"></i>
                                 </span>
                                 <span class="hide-menu">Tài khoản</span>
                             </a>
@@ -81,12 +84,20 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="index.php?act=ds_donhang" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-typography"></i>
+                                <i class="fa-regular fa-ballot-check"></i>
                                 </span>
                                 <span class="hide-menu">Đơn hàng</span>
                             </a>
                         </li>
-                        <li class="nav-small-cap">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="index.php?act=thong_ke" aria-expanded="false">
+                                <span>
+                                <i class="fa-regular fa-chart-simple"></i>
+                                </span>
+                                <span class="hide-menu">Thống kê</span>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">AUTH</span>
                         </li>
@@ -125,7 +136,7 @@
                                 </span>
                                 <span class="hide-menu">Sample Page</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
                         <div class="d-flex">

@@ -1,4 +1,4 @@
-<h1 class="text-center">Toàn bộ tài khoản</h1>
+<h1 class="text-center">Toàn bộ tài khoản (<?= $sl_tk['sl_tk'] ?>)</h1>
 <a href="index.php?act=them_tk"><button class="btn btn-primary">Thêm tài khoản</button></a>
 <table class="table bang table-hover">
     <thead>
@@ -22,7 +22,7 @@
                 <td><?= $sdt?></td>
                 <td><?= $address ?></td>
                 <td><a href="index.php?act=ds_taikhoan&id_tk_xoa=<?= $id_taikhoan ?>" onclick="return confirm('bạn có chắc là muốn xóa')">Xóa</a></td>
-                <td><a href="index.php?act=edit_tk&id_tk=<?= $id_taikhoan ?>">Sửa</a></td>
+                <td><a href="index.php?act=edit_tk&id_tk=<?= $id_taikhoan ?>" onclick="return confirm('bạn có chắc là muốn sửa tài khoản này')">Sửa</a></td>
             </tr>
         <?php endforeach ?>
     </tbody>

@@ -13,9 +13,9 @@
             <div class="col-3">Người nhận: </div><span class="col-8"><?= isset($ten) ? $ten : ''  ?></span>
             <div class="col-3">Địa chỉ:</div><span class="col-8"><?= isset($chi_tiet) ? $chi_tiet : '' ?></span>
             <div class="col-3">Tổng tiền: </div><span class="col-8 dam price" data-gia="<?=$tong_tien ?>"></span>
-            <div class="col-3">Sản phẩm:</div> <span class="col-7"><?=$tong_sl ?></span> <a href="" class="col-2 dam a">Chi tiết</a>
+            <div class="col-3">Sản phẩm:</div> <span class="col-7"><?=$tong_sl ?></span> 
             <div class="mua">
-                <button name="thanh_toan" value="thanh_toan">Theo dõi đơn hàng</button></a>
+                <a href="index.php?act=chi_tiet_dh&id_don_hang=<?= $id_giohang['last_giohang_id'] ?>"><button name="thanh_toan" value="thanh_toan">Theo dõi đơn hàng</button></a>
             </div>
             <a href="index.php" class="text-center tiep_tuc">Tiếp tục mua sắm</a>
         </div>

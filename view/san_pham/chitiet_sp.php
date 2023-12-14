@@ -29,7 +29,7 @@ extract($chitiet_sp) ?>
                 <div class="ma_sp">
                     Mã sp: <span class="mau_chung"><?= $id_sanpham ?></span>
                 </div>
-                <div class="gia price" data-gia="<?= $gia ?>"><?= number_format($gia,0,'','.')?> đ</div>
+                <div class="gia price" data-gia="<?= $gia ?>"><?= number_format($gia, 0, '', '.') ?> đ</div>
                 <div class="mau">Màu sắc: <span class="mau_chung"></span></div>
                 <div class="bang_mau">
                     <?php $mang_img_mau = explode(',', $img_mau);
@@ -102,9 +102,9 @@ extract($chitiet_sp) ?>
                     </div>
                 </div>
 
-                <div class="mua">
+                <!-- <div class="mua">
                     <button id="mua">Mua</button>
-                </div>
+                </div> -->
                 <div class="accordion accordion-flush mota" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="panelsStayOpen-headingOne">
