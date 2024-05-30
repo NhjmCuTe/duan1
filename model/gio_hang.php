@@ -1,6 +1,5 @@
 <?php
 session_start();
-// unset($_SESSION['gio_hang']);
 if (isset($_POST)) {
     $da_ton_tai = false;
 
@@ -27,10 +26,10 @@ if (isset($_POST)) {
         $_SESSION['gio_hang'][] = $data['gio_hang'];
     }
     if ($data) {
-
-        echo "Dữ liệu đã được nhận thành công!";
+        $_SESSION['sl_gio_hang']= count($_SESSION['gio_hang']);
+        echo ($_SESSION['sl_gio_hang']);
     } else {
-        // Nếu không nhận được dữ liệu, có thể có lỗi ở phía client
+
         echo "Lỗi: Không nhận được dữ liệu từ phía client!";
     }
 }

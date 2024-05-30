@@ -47,7 +47,7 @@
               <h6 class="product-item-name">
                 <a href="index.php?act=chitiet_sp&id_sp=<?= $value['id_sanpham'] ?>"><?= $ten_sanpham ?></a>
               </h6>
-              <span class="price" data-gia="<?= $gia ?>"></span>
+              <span class="price" ><?= number_format($gia,0,'','.')?> đ</span>
             </div>
           </div>
 

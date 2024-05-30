@@ -13,3 +13,12 @@ function xoa_kichthuoc($id_kichthuoc){
     $sql = "delete from kich_thuoc where id_kichthuoc = $id_kichthuoc";
     pdo_execute($sql);
 }
+function one_kich_thuoc($id_kichthuoc){
+    $sql= "select * from kich_thuoc where id_kichthuoc = $id_kichthuoc";
+    $kq = pdo_query_one($sql);
+    return $kq;
+}
+function edit_kich_thuoc($id_kichthuoc, $ten){
+    $sql="update kich_thuoc set ten_kichthuoc = '$ten' where id_kichthuoc = $id_kichthuoc";
+    pdo_execute($sql);
+}

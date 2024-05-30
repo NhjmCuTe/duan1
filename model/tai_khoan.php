@@ -1,4 +1,19 @@
 <?php
+//check email và username khi đăng ký
+function checkEmail($email)
+{
+    $sql = "select * from tai_khoan where email='" . $email . "'";
+    $checkemail = pdo_query_one($sql);
+    return $checkemail;
+}
+
+function checkUsername($user)
+{
+    $sql = "select * from tai_khoan where ten='" . $user . "'";
+    $checkusername = pdo_query_one($sql);
+    return $checkusername;
+}
+
 // thêm tài khoản ki đăng kí
 function insert_taikhoan($user, $pass, $email, $sdt, $address)
 {
@@ -22,25 +37,34 @@ function all_taikhoan()
     return $kq;
 }
 
-// xuất thông tin tài khoản của người dùng
-// function loadAllone_taikhoan($idUser){
-//     $sql = " SELECT * FROM user where  idUser='".$idUser."'";
-//     $listtk = pdo_query_one($sql);
-//     return $listtk;
-// }
+function tk_nguoidung()
+{
+    $sql = "select * from tai_khoan where role is null ";
+    $kq = pdo_query($sql);
+    return $kq;
+}
+
+//xuất thông tin tài khoản của người dùng
+function loadOne_taikhoan($id){
+    $sql = "select * from tai_khoan where id_taikhoan='".$id."'";
+    $kq = pdo_query_one($sql);
+    return $kq;
+}
+
 // // xác minh tài khoản theo email khi quên
 // function loadAllone_checkemail($email){
 //     $sql = " SELECT * FROM user where  email='".$email."'";
 //     $listtk = pdo_query_one($sql);
 //     return $listtk;
 // }
-// // thay đổi thông tin dùng
-// function update_taikhoan($user,$pass,$email,$sdt,$address){
-//     $sql = "update user set user='".$user."',  pass='".$pass."' ,email='".$email."' ,tel='".$sdt."' ,address='".$address."'  where user='".$user."'";
-//     pdo_execute($sql);
 
-// }
+// thay đổi thông tin dùng
+function update_taikhoan($id,$user,$pass,$email,$sdt,$address){
+    $sql = "update tai_khoan set ten='".$user."',  pass='".$pass."' ,email='".$email."' ,sdt='".$sdt."' ,address='".$address."'  where id_taikhoan='".$id."'";
+    pdo_execute($sql);
+}
 
+//xóa người dùng
 function xoa_tk($id_tk){
     $sql = "delete from tai_khoan where id_taikhoan = $id_tk";
     pdo_execute($sql);

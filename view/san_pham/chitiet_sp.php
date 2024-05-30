@@ -1,4 +1,4 @@
-<?php 
+<?php
 extract($chitiet_sp) ?>
 
 <main>
@@ -29,7 +29,7 @@ extract($chitiet_sp) ?>
                 <div class="ma_sp">
                     Mã sp: <span class="mau_chung"><?= $id_sanpham ?></span>
                 </div>
-                <div class="gia price" data-gia="<?= $gia ?>"></div>
+                <div class="gia price" data-gia="<?= $gia ?>"><?= number_format($gia,0,'','.')?> đ</div>
                 <div class="mau">Màu sắc: <span class="mau_chung"></span></div>
                 <div class="bang_mau">
                     <?php $mang_img_mau = explode(',', $img_mau);
@@ -78,17 +78,17 @@ extract($chitiet_sp) ?>
                 </div>
 
 
-                <div class="so_luong">
-                    <span>Số lượng: </span><button class="bt1"><i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" /><button class="bt2"><i class="fa-solid fa-plus"></i></button>
+                <div class="so_luong_chinh">
+                    <span>Số lượng: </span><button class="bt1"><i class="fa-solid fa-minus"></i></button><input type="number" name="" id="" min="1" value="1" placeholder="Số lượng" disabled /><button class="bt2"><i class="fa-solid fa-plus"></i></button>
                 </div>
 
                 <div class="them_vao_gio">
                     <button id="liveToastBtn">
-                            <i class="fa-regular fa-cart-shopping"></i>Thêm vào giỏ
-                        </button>
+                        <i class="fa-regular fa-cart-shopping"></i>Thêm vào giỏ
+                    </button>
                 </div>
 
-                <div class="toast-container position-fixed top-0 end-0 thong_bao" >
+                <div class="toast-container position-fixed top-0 end-0 thong_bao">
                     <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000">
                         <div class="align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="d-flex">
@@ -103,7 +103,7 @@ extract($chitiet_sp) ?>
                 </div>
 
                 <div class="mua">
-                    <a href=""><button>Mua</button></a>
+                    <button id="mua">Mua</button>
                 </div>
                 <div class="accordion accordion-flush mota" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">

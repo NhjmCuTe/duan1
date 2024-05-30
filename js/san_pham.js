@@ -64,7 +64,7 @@ productDivs.forEach(function (div) {
   var id_mau = img.dataset.id_mau;
 
   img.addEventListener("click", function () {
-    fetch("view/get_image_info.php?id_mau=" + id_mau)
+    fetch("view/san_pham/anh_theo_mau.php?id_mau=" + id_mau)
       .then((response) => response.json())
       .then((data) => {
         // Lấy đối tượng carousel Slick bằng ID
@@ -148,5 +148,29 @@ bang_mau.forEach((mau) => {
   });
 });
 }
+
+var so_luong_chinh = document.querySelector(".so_luong_chinh input");
+var giam_sl = document.querySelector(".so_luong_chinh .bt1");
+var tang_sl = document.querySelector(".so_luong_chinh .bt2");
+
+tang_sl.addEventListener("click", () => {
+  var so = parseInt(so_luong_chinh.value);
+
+  console.log(so_luong_chinh.value);
+  so_luong_chinh.value = so + 1;
+
+  // tang_giam_sl();
+  // tinhTongTienTrongGioHang();
+  // hientien();
+});
+giam_sl.addEventListener("click", () => {
+  var so = parseInt(so_luong_chinh.value);
+  if (so > 1) {
+    so_luong_chinh.value = so - 1;
+
+    // tinhTongTienTrongGioHang();
+    // hientien();
+  }
+});
 
 

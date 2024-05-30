@@ -5,9 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Modernize Free</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/png" href="admin/src/assets/images/logos/favicon.png" />
+
+
     <link rel="stylesheet" href="admin/src/assets/css/styles.min.css" />
     <link rel="stylesheet" href="admin/css.css">
     <script src="admin/js.js"></script>
@@ -80,11 +79,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=ds_donhang" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-typography"></i>
                                 </span>
-                                <span class="hide-menu">Typography</span>
+                                <span class="hide-menu">Đơn hàng</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
@@ -100,11 +99,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                            <a class="sidebar-link" href="index.php?act=dangxuat" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user-plus"></i>
                                 </span>
-                                <span class="hide-menu">Register</span>
+                                <span class="hide-menu">Đăng xuất</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
@@ -128,7 +127,7 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
+                    <!-- <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
                         <div class="d-flex">
                             <div class="unlimited-access-title me-3">
                                 <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
@@ -138,7 +137,7 @@
                                 <img src="admin/src/assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -148,7 +147,7 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header">
+            <!-- <header class="app-header">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <ul class="navbar-nav">
                         <li class="nav-item d-block d-xl-none">
@@ -191,5 +190,5 @@
                         </ul>
                     </div>
                 </nav>
-            </header>
+            </header> -->
             <!--  Header End -->
